@@ -1,98 +1,50 @@
-//
-//  ContentView.swift
-//  FlowerGO_APP
-//
-//  Created by Peigen Yuan on 7/9/24.
-//  pgyy
-
 import SwiftUI
-import CoreData
 
 struct ContentView: View {
+    @State private var isActive = false
     
-    @Environment(\.managedObjectContext) private var viewContext
-
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
-        animation: .default)
-    private var items: FetchedResults<Item>
-
     var body: some View {
-        NavigationView {
-            // background
+        NavigationStack {
             ZStack {
-                Color(.green)
-                    .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-                // title
+                Color.green
+                    .edgesIgnoringSafeArea(.all)
                 VStack {
-                    Text("FLOWER GO!")
-                        .font(.system(size: 50, weight: .heavy, design: .default))
+                    Text("FLOWER")
+                        .font(.system(size: 50, weight: .heavy, design: .serif))
                         .foregroundColor(.blue)
+                        .padding()
+                    Text("GO!")
+                        .font(.system(size: 70, weight: .heavy, design: .serif))
+                        .foregroundColor(.blue)
+                        .onTapGesture {
+                            self.isActive = true
+                        }
                 }
             }
-//            List {
-//                ForEach(items) { item in
-//                    NavigationLink {
-//                        Text("Item at \(item.timestamp!, formatter: itemFormatter)")
-//                    } label: {
-//                        Text(item.timestamp!, formatter: itemFormatter)
-//                    }
-//                }
-//                .onDelete(perform: deleteItems)
-//            }
-//            .toolbar {
-//                ToolbarItem(placement: .navigationBarTrailing) {
-//                    EditButton()
-//                }
-//                ToolbarItem {
-//                    Button(action: addItem) {
-//                        Label("Add Item", systemImage: "plus")
-//                    }
-//                }
-//            }
-//            Text("Select an item")
-        }
-    }
-
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
-
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
-        }
-    }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            offsets.map { items[$0] }.forEach(viewContext.delete)
-
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+            .navigationDestination(isPresented: $isActive) {
+                HomeView()
             }
         }
     }
 }
 
-private let itemFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .short
-    formatter.timeStyle = .medium
-    return formatter
-}()
+struct HomeView: View {
+    var body: some View {
+        Text("Home Screen")
+            .font(.largeTitle)
+            .foregroundColor(.black)
+    }
+}
+
+// MARK: - Previews
 
 #Preview {
-    ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+    ContentView()
+        .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+}
+
+struct HomeView_Previews: PreviewProvider {
+    static var previews: some View {
+        HomeView()
+    }
 }
