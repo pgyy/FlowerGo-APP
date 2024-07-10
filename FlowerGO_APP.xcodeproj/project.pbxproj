@@ -7,8 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		793918872C3EBB1600454DCE /* FlowerGoTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793918862C3EBB1600454DCE /* FlowerGoTabView.swift */; };
+		793918892C3EC20D00454DCE /* CamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793918882C3EC20D00454DCE /* CamView.swift */; };
+		7939188B2C3EC26F00454DCE /* GardenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7939188A2C3EC26F00454DCE /* GardenView.swift */; };
+		7939188D2C3EC29500454DCE /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7939188C2C3EC29500454DCE /* UserView.swift */; };
+		7939188F2C3EC47400454DCE /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7939188E2C3EC47400454DCE /* MapView.swift */; };
 		79738A472C3D798B0063959A /* FlowerGO_APPApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79738A462C3D798B0063959A /* FlowerGO_APPApp.swift */; };
-		79738A492C3D798B0063959A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79738A482C3D798B0063959A /* ContentView.swift */; };
+		79738A492C3D798B0063959A /* PreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79738A482C3D798B0063959A /* PreView.swift */; };
 		79738A4B2C3D798C0063959A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79738A4A2C3D798C0063959A /* Assets.xcassets */; };
 		79738A4E2C3D798C0063959A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79738A4D2C3D798C0063959A /* Preview Assets.xcassets */; };
 		79738A502C3D798C0063959A /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79738A4F2C3D798C0063959A /* Persistence.swift */; };
@@ -36,9 +41,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		793918862C3EBB1600454DCE /* FlowerGoTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowerGoTabView.swift; sourceTree = "<group>"; };
+		793918882C3EC20D00454DCE /* CamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CamView.swift; sourceTree = "<group>"; };
+		7939188A2C3EC26F00454DCE /* GardenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardenView.swift; sourceTree = "<group>"; };
+		7939188C2C3EC29500454DCE /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
+		7939188E2C3EC47400454DCE /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		79738A432C3D798B0063959A /* FlowerGO_APP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlowerGO_APP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79738A462C3D798B0063959A /* FlowerGO_APPApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowerGO_APPApp.swift; sourceTree = "<group>"; };
-		79738A482C3D798B0063959A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		79738A482C3D798B0063959A /* PreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreView.swift; sourceTree = "<group>"; };
 		79738A4A2C3D798C0063959A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		79738A4D2C3D798C0063959A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		79738A4F2C3D798C0063959A /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -75,6 +85,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		793918852C3EBADC00454DCE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				79738A482C3D798B0063959A /* PreView.swift */,
+				7939188C2C3EC29500454DCE /* UserView.swift */,
+				7939188A2C3EC26F00454DCE /* GardenView.swift */,
+				7939188E2C3EC47400454DCE /* MapView.swift */,
+				793918882C3EC20D00454DCE /* CamView.swift */,
+				793918862C3EBB1600454DCE /* FlowerGoTabView.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		79738A3A2C3D798B0063959A = {
 			isa = PBXGroup;
 			children = (
@@ -98,8 +121,8 @@
 		79738A452C3D798B0063959A /* FlowerGO_APP */ = {
 			isa = PBXGroup;
 			children = (
+				793918852C3EBADC00454DCE /* Views */,
 				79738A462C3D798B0063959A /* FlowerGO_APPApp.swift */,
-				79738A482C3D798B0063959A /* ContentView.swift */,
 				79738A4A2C3D798C0063959A /* Assets.xcassets */,
 				79738A4F2C3D798C0063959A /* Persistence.swift */,
 				79738A512C3D798C0063959A /* FlowerGO_APP.xcdatamodeld */,
@@ -264,9 +287,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				79738A502C3D798C0063959A /* Persistence.swift in Sources */,
-				79738A492C3D798B0063959A /* ContentView.swift in Sources */,
+				79738A492C3D798B0063959A /* PreView.swift in Sources */,
 				79738A532C3D798C0063959A /* FlowerGO_APP.xcdatamodeld in Sources */,
+				7939188D2C3EC29500454DCE /* UserView.swift in Sources */,
+				7939188B2C3EC26F00454DCE /* GardenView.swift in Sources */,
 				79738A472C3D798B0063959A /* FlowerGO_APPApp.swift in Sources */,
+				793918892C3EC20D00454DCE /* CamView.swift in Sources */,
+				7939188F2C3EC47400454DCE /* MapView.swift in Sources */,
+				793918872C3EBB1600454DCE /* FlowerGoTabView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

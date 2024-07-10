@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct ContentView: View {
+struct PreView: View {
     @State private var isActive = false
     
     var body: some View {
@@ -22,29 +22,15 @@ struct ContentView: View {
                 }
             }
             .navigationDestination(isPresented: $isActive) {
-                HomeView()
+                FlowerGoTabView()
             }
         }
-    }
-}
-
-struct HomeView: View {
-    var body: some View {
-        Text("Home Screen")
-            .font(.largeTitle)
-            .foregroundColor(.black)
     }
 }
 
 // MARK: - Previews
 
 #Preview {
-    ContentView()
+    PreView()
         .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-}
-
-struct HomeView_Previews: PreviewProvider {
-    static var previews: some View {
-        HomeView()
-    }
 }

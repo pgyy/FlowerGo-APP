@@ -13,7 +13,7 @@ struct FlowerGO_APPApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            PreView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
