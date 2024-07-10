@@ -16,6 +16,30 @@ struct FlowerGoTabView: View {
                     Image(systemName: "map")
                     Text("Map")
                 }
+            
+            GardenView()
+                .tabItem {
+                    Image(systemName: "apple.meditate")
+                    Text("Garden")
+                }
+            
+            CamView()
+                .tabItem {
+                    Image(systemName: "camera.viewfinder")
+                    Text("AR")
+                }
+            
+            CombatView()
+                .tabItem {
+                    Image(systemName: "shield.lefthalf.filled")
+                    Text("Defend")
+                }
+            
+            UserView()
+                .tabItem {
+                    Image(systemName: "person")
+                    Text("Me")
+                }
         }
         
         
