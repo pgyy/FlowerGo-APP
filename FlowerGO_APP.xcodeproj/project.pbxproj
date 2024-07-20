@@ -62,6 +62,7 @@
 		79738A662C3D798C0063959A /* FlowerGO_APPUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowerGO_APPUITests.swift; sourceTree = "<group>"; };
 		79738A682C3D798C0063959A /* FlowerGO_APPUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowerGO_APPUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		79C847D42C4C63F900069763 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		79C847D62C4C685D00069763 /* FlowerGO-APP-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "FlowerGO-APP-Info.plist"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +126,7 @@
 		79738A452C3D798B0063959A /* FlowerGO_APP */ = {
 			isa = PBXGroup;
 			children = (
+				79C847D62C4C685D00069763 /* FlowerGO-APP-Info.plist */,
 				793918852C3EBADC00454DCE /* Views */,
 				79738A462C3D798B0063959A /* FlowerGO_APPApp.swift */,
 				793918862C3EBB1600454DCE /* FlowerGoTabView.swift */,
@@ -469,6 +471,8 @@
 				DEVELOPMENT_TEAM = 329GHPFY8A;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "FlowerGO-APP-Info.plist";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Please allow us to access your location";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -498,6 +502,8 @@
 				DEVELOPMENT_TEAM = 329GHPFY8A;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "FlowerGO-APP-Info.plist";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Please allow us to access your location";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
