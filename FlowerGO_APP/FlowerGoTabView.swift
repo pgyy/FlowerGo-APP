@@ -1,17 +1,12 @@
-//
-//  SwiftUIView.swift
-//  FlowerGO_APP
-//
-//  Created by Peigen Yuan on 7/10/24.
-//
-
 import SwiftUI
+import MapKit
 
 struct FlowerGoTabView: View {
+    @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 42.4075, longitude: -71.1190), span: MKCoordinateSpan(latitudeDelta: 0.008, longitudeDelta: 0.008))
+
     var body: some View {
-        
         TabView {
-            MapView()
+            MapView(region: $region)
                 .tabItem {
                     Image(systemName: "map")
                     Text("Map")
@@ -41,12 +36,10 @@ struct FlowerGoTabView: View {
                     Text("Me")
                 }
         }
-        
-        
     }
 }
 
-struct HomeView_Previews: PreviewProvider {
+struct FlowerGoTabView_Previews: PreviewProvider {
     static var previews: some View {
         FlowerGoTabView()
     }
