@@ -2,6 +2,7 @@ import SwiftUI
 import MapKit
 
 struct FlowerGoTabView: View {
+    @StateObject private var locationManager = LocationManager()
     @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 42.4075, longitude: -71.1190), span: MKCoordinateSpan(latitudeDelta: 0.008, longitudeDelta: 0.008))
 
     var body: some View {

@@ -22,6 +22,7 @@
 		79738A5D2C3D798C0063959A /* FlowerGO_APPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79738A5C2C3D798C0063959A /* FlowerGO_APPTests.swift */; };
 		79738A672C3D798C0063959A /* FlowerGO_APPUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79738A662C3D798C0063959A /* FlowerGO_APPUITests.swift */; };
 		79738A692C3D798C0063959A /* FlowerGO_APPUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79738A682C3D798C0063959A /* FlowerGO_APPUITestsLaunchTests.swift */; };
+		79C847D52C4C63F900069763 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C847D42C4C63F900069763 /* LocationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		79738A622C3D798C0063959A /* FlowerGO_APPUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlowerGO_APPUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		79738A662C3D798C0063959A /* FlowerGO_APPUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowerGO_APPUITests.swift; sourceTree = "<group>"; };
 		79738A682C3D798C0063959A /* FlowerGO_APPUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowerGO_APPUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		79C847D42C4C63F900069763 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +128,7 @@
 				793918852C3EBADC00454DCE /* Views */,
 				79738A462C3D798B0063959A /* FlowerGO_APPApp.swift */,
 				793918862C3EBB1600454DCE /* FlowerGoTabView.swift */,
+				79C847D42C4C63F900069763 /* LocationManager.swift */,
 				79738A4A2C3D798C0063959A /* Assets.xcassets */,
 				79738A4F2C3D798C0063959A /* Persistence.swift */,
 				79738A512C3D798C0063959A /* FlowerGO_APP.xcdatamodeld */,
@@ -292,6 +295,7 @@
 				793918912C3EC90500454DCE /* CombatView.swift in Sources */,
 				79738A502C3D798C0063959A /* Persistence.swift in Sources */,
 				79738A492C3D798B0063959A /* PreView.swift in Sources */,
+				79C847D52C4C63F900069763 /* LocationManager.swift in Sources */,
 				79738A532C3D798C0063959A /* FlowerGO_APP.xcdatamodeld in Sources */,
 				7939188D2C3EC29500454DCE /* UserView.swift in Sources */,
 				7939188B2C3EC26F00454DCE /* GardenView.swift in Sources */,
