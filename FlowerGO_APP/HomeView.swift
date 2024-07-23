@@ -63,7 +63,7 @@ struct ContentView: View {
                         
                         VStack(alignment: .leading, spacing: 0) {
                             HStack(spacing: 8) {
-                                Image(systemName: "sparkle")
+                                Image(systemName: "camera.macro.circle.fill")
                                     .font(.system(size: 17, weight: .regular))
                                     .imageScale(.small)
                                     .foregroundStyle(.white)
@@ -106,33 +106,19 @@ struct ContentView: View {
                         .background(Color(hex: 0xebebeb))
                         .clipped()
                         .cornerRadius(16)
-                        .overlay(
-                        alignment: .bottomTrailing) {
-                            HStack(spacing:6) {
-                                Image(systemName: "camera.on.rectangle.fill")
-                                  .font(.system(size: 12, weight: .regular))
-                                  .imageScale(.small)
-                                  .symbolRenderingMode(.hierarchical)
-                                  .foregroundStyle(.white)
-                                  .frame(width: 16, height: 16)
-                                Text("Maria Poulsen")
-                                  .textStyle(Tag())
-                            }
-                            .padding(8)
-                            .background(.black.opacity(0))
-                            .clipped()
-                            .cornerRadius(12)
-                            .padding(16)
-                        }
+
                         VStack(alignment: .leading, spacing:12) {
-                            VStack(alignment: .leading, spacing:8) {
-                                Text("Itinerary")
-                                  .textStyle(Subhead_SemiBold_1())
-                                ZStack() {}
-                                .frame(maxWidth: .infinity, alignment: .topLeading)
-                                .frame(height: 1, alignment: .topLeading)
-                                .background(Color(hex: 0xd1d1d1))
-                                .opacity(0.4)
+                            HStack(spacing: 8) {
+                                Image(systemName: "flag.circle.fill")
+                                    .font(.system(size: 17, weight: .regular))
+                                    .imageScale(.small)
+                                    .foregroundStyle(.white)
+                                    .frame(width: 24, height: 24)
+                                    .clipped()
+                                    .background(Color(hex: 0x5856d6))
+                                    .cornerRadius(64)
+                                Text("Tutorial")
+                                    .textStyle(Callout())
                             }
                             .frame(width: 321, alignment: .topLeading)
                             .saveSize(in: $geo2)
