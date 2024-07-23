@@ -2,10 +2,10 @@ import SwiftUI
 import Charts
 import MapKit
 import CoreLocation
-let appScenes = UIApplication.shared.connectedScenes
-let appWindowScene = appScenes.first as? UIWindowScene
-let appWindow = appWindowScene?.windows.first
-let safeAreaTop = appWindow?.safeAreaInsets.top
+let scenes = UIApplication.shared.connectedScenes
+let windowScene = scenes.first as? UIWindowScene
+let window = windowScene?.windows.first
+let safeAreaTop = window?.safeAreaInsets.top
 struct ContentView: View {
     @State var geo1: CGSize = .zero
     @State var geo2: CGSize = .zero
@@ -21,11 +21,11 @@ struct ContentView: View {
                         Image(systemName: "chevron.backward")
                           .font(.system(size: 24, weight: .semibold))
                           .imageScale(.small)
-                          .foregroundStyle(Color(hex: 0x000000))
+                          .foregroundStyle(.black)
                           .opacity(0.25)
                           .frame(width: 44, height: 44)
                           .clipped()
-                          .background(Color(hex: 0xffffff))
+                          .background(.white)
                           .opacity(0.85)
                           .cornerRadius(64)
                         Spacer()
@@ -33,11 +33,11 @@ struct ContentView: View {
                             Image(systemName: "bookmark.fill")
                               .font(.system(size: 22, weight: .medium))
                               .imageScale(.small)
-                              .foregroundStyle(Color(hex: 0x000000))
+                              .foregroundStyle(.black)
                               .opacity(0.25)
                               .frame(width: 44, height: 44)
                               .clipped()
-                              .background(Color(hex: 0xffffff))
+                              .background(.white)
                               .opacity(0.85)
                               .cornerRadius(64)
                         }
@@ -49,95 +49,77 @@ struct ContentView: View {
                     VStack(spacing:12) {
                         ZStack() {}
                         .frame(width: geo1.width * 0.1, height: 4, alignment: .topLeading)
-                        .background(Color(hex: 0xffffff, alpha: 0))
+                        .background(.white.opacity(0))
                         .cornerRadius(16).opacity(0.1)
                         VStack(alignment: .leading, spacing:8) {
-                            Text("Discovering Yosemite")
+                            Text("Discovering Tufts")
                               .textStyle(Large_Title())
-                            Text("Yosemite National Park is in California’s Sierra Nevada mountains. It’s famed for its giant, ancient sequoia trees.")
+                              .bold()
+                            Text("You are on a mission to discover flowers on the campus of Tufts University. Get into position, and look around for the flowers below!")
                               .textStyle(Subhead_SemiBold())
                         }
                         .frame(width: 345, alignment: .topLeading)
                         .padding(.bottom, 12)
-                        VStack(alignment: .leading, spacing:0) {
-                            HStack(spacing:8) {
+                        
+                        VStack(alignment: .leading, spacing: 0) {
+                            HStack(spacing: 8) {
                                 Image(systemName: "sparkle")
-                                  .font(.system(size: 17, weight: .regular))
-                                  .imageScale(.small)
-                                  .foregroundStyle(Color(hex: 0xffffff))
-                                  .frame(width: 24, height: 24)
-                                  .clipped()
-                                  .background(Color(hex: 0x5856d6)).cornerRadius(64)
-                                Text("Photos")
-                                  .textStyle(Callout())
+                                    .font(.system(size: 17, weight: .regular))
+                                    .imageScale(.small)
+                                    .foregroundStyle(.white)
+                                    .frame(width: 24, height: 24)
+                                    .clipped()
+                                    .background(Color(hex: 0x5856d6))
+                                    .cornerRadius(64)
+                                Text("Flowers")
+                                    .textStyle(Callout())
                             }
                             .padding(16)
                             .frame(maxWidth: .infinity, alignment: .leading)
+
                             ScrollView(.horizontal, showsIndicators: false) {
-                                HStack(alignment: .top, spacing:0) {
-                                    AsyncImage(url: URL(string: "https://images.unsplash.com/photo-1431794062232-2a99a5431c6c?ixid=M3w4OTk0OHwwfDF8c2VhcmNofDI2fHxuYXR1cmV8ZW58MHx8fHwxNjg2NzMwODY5fDA&ixlib=rb-4.0.3")) { image in
-                                        image.resizable()
-                                          .aspectRatio(contentMode: .fill)
-                                          .frame(minWidth: 361, maxWidth: 361, minHeight: 0, maxHeight: .infinity)
-                                          .clipped()
-                                    } placeholder: {
-                                        ProgressView()
-                                    }
-                                    AsyncImage(url: URL(string: "https://images.unsplash.com/photo-1465256410760-10640339c72c?ixid=M3w4OTk0OHwwfDF8c2VhcmNofDh8fG1leGljb3xlbnwwfHx8fDE2ODY2NzY3Nzh8MA&ixlib=rb-4.0.3")) { image in
-                                        image.resizable()
+                                HStack(alignment: .top, spacing: 0) {
+                                    Image("Image1")
+                                        .resizable()
                                         .aspectRatio(contentMode: .fill)
                                         .frame(minWidth: 361, maxWidth: 361, minHeight: 0, maxHeight: .infinity)
                                         .clipped()
-                                    } placeholder: {
-                                        ProgressView()
-                                    }
-                                    AsyncImage(url: URL(string: "https://images.unsplash.com/photo-1633466858898-a51e5fa02c91?ixid=M3w4OTk0OHwwfDF8c2VhcmNofDE2fHxzb25vbWF8ZW58MHx8fHwxNjg2Njc2OTM1fDA&ixlib=rb-4.0.3")) { image in
-                                        image.resizable()
+
+                                    Image("Image2")
+                                        .resizable()
                                         .aspectRatio(contentMode: .fill)
                                         .frame(minWidth: 361, maxWidth: 361, minHeight: 0, maxHeight: .infinity)
                                         .clipped()
-                                    } placeholder: {
-                                        ProgressView()
-                                    }
-                                    AsyncImage(url: URL(string: "https://images.unsplash.com/photo-1498855592392-af2bf1e0a4c7?ixid=M3w4OTk0OHwwfDF8c2VhcmNofDIxfHx5b3NlbWl0ZXxlbnwwfHx8fDE2ODY3MzE3MzV8MA&ixlib=rb-4.0.3")) { image in
-                                        image.resizable()
+
+                                    Image("Image3")
+                                        .resizable()
                                         .aspectRatio(contentMode: .fill)
                                         .frame(minWidth: 361, maxWidth: 361, minHeight: 0, maxHeight: .infinity)
                                         .clipped()
-                                    } placeholder: {
-                                        ProgressView()
-                                    }
-                                    AsyncImage(url: URL(string: "https://images.unsplash.com/photo-1604542031658-5799ca5d7936?ixid=M3w4OTk0OHwwfDF8c2VhcmNofDR8fHlvc2VtaXRlfGVufDB8fHx8MTY4NjczMTczNXww&ixlib=rb-4.0.3")) { image in
-                                        image.resizable()
-                                        .aspectRatio(contentMode: .fill)
-                                        .frame(minWidth: 361, maxWidth: 361, minHeight: 0, maxHeight: .infinity)
-                                        .clipped()
-                                    } placeholder: {
-                                        ProgressView()
-                                    }
                                 }
                             }
                             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
                             .clipped()
                         }
                         .frame(maxWidth: .infinity, alignment: .topLeading)
-                        .saveSize(in: $geo1).frame(height: 284, alignment: .topLeading)
+                        .frame(height: 284, alignment: .topLeading)
                         .background(Color(hex: 0xebebeb))
                         .clipped()
                         .cornerRadius(16)
-                        .overlay(alignment: .bottomTrailing) {
+                        .overlay(
+                        alignment: .bottomTrailing) {
                             HStack(spacing:6) {
                                 Image(systemName: "camera.on.rectangle.fill")
                                   .font(.system(size: 12, weight: .regular))
                                   .imageScale(.small)
                                   .symbolRenderingMode(.hierarchical)
-                                  .foregroundStyle(Color(hex: 0xffffff))
+                                  .foregroundStyle(.white)
                                   .frame(width: 16, height: 16)
                                 Text("Maria Poulsen")
                                   .textStyle(Tag())
                             }
                             .padding(8)
-                            .background(Color(hex: 0x000000, alpha: 0))
+                            .background(.black.opacity(0))
                             .clipped()
                             .cornerRadius(12)
                             .padding(16)
@@ -152,13 +134,13 @@ struct ContentView: View {
                                 .background(Color(hex: 0xd1d1d1))
                                 .opacity(0.4)
                             }
-                            .saveSize(in: $geo2)
                             .frame(width: 321, alignment: .topLeading)
+                            .saveSize(in: $geo2)
                             HStack(spacing:8) {
                                 Image(systemName: "mountain.2.fill")
                                   .font(.system(size: 14, weight: .regular))
                                   .imageScale(.small)
-                                  .foregroundStyle(Color(hex: 0xffffff))
+                                  .foregroundStyle(.white)
                                   .frame(width: 32, height: 32)
                                   .clipped()
                                   .background(Color(hex: 0x34c759)).cornerRadius(64)
@@ -175,7 +157,7 @@ struct ContentView: View {
                                 Image(systemName: "tree.fill")
                                   .font(.system(size: 17, weight: .regular))
                                   .imageScale(.small)
-                                  .foregroundStyle(Color(hex: 0xffffff))
+                                  .foregroundStyle(.white)
                                   .frame(width: 32, height: 32)
                                   .clipped()
                                   .background(Color(hex: 0x00c7be)).cornerRadius(64)
@@ -191,7 +173,7 @@ struct ContentView: View {
                             HStack(spacing:8) {
                                 Image(systemName: "figure.skiing.downhill")
                                   .font(.system(size: 17, weight: .regular))
-                                  .foregroundStyle(Color(hex: 0xffffff))
+                                  .foregroundStyle(.white)
                                   .frame(width: 32, height: 32)
                                   .clipped()
                                   .background(Color(hex: 0xff3b30)).cornerRadius(64)
@@ -207,7 +189,7 @@ struct ContentView: View {
                             HStack(spacing:8) {
                                 Image(systemName: "water.waves.and.arrow.down")
                                   .font(.system(size: 17, weight: .regular))
-                                  .foregroundStyle(Color(hex: 0xffffff))
+                                  .foregroundStyle(.white)
                                   .frame(width: 32, height: 32)
                                   .clipped()
                                   .background(Color(hex: 0x32ade6)).cornerRadius(64)
@@ -235,10 +217,12 @@ struct ContentView: View {
                                         Image(systemName: "note")
                                           .font(.system(size: 17, weight: .regular))
                                           .imageScale(.small)
-                                          .foregroundStyle(Color(hex: 0xffffff))
-                                          .saveSize(in: $geo3).frame(width: 24, height: 24)
+                                          .foregroundStyle(.white)
+                                          .frame(width: 24, height: 24)
                                           .clipped()
-                                        .overlay(alignment: .bottomLeading) {
+                                          .saveSize(in: $geo1)
+                                          .overlay(
+                                        alignment: .bottomLeading) {
                                             ZStack() {}
                                             .frame(width: 329, height: 1, alignment: .topLeading)
                                             .background(Color(hex: 0xd1d1d1))
@@ -270,8 +254,8 @@ struct ContentView: View {
                                 .background(Color(hex: 0xd1d1d1))
                                 .opacity(0.4)
                             }
-                            .saveSize(in: $geo4)
                             .frame(width: 321, alignment: .topLeading)
+                            .saveSize(in: $geo4)
                             Chart_1()
                             Text("If you don't want your Yosemite experience to be limited by road, trail, and campground closures, your best bet is to visit between June and September, when is several degrees warmer.")
                             .textStyle(Footnote_5())
@@ -322,14 +306,14 @@ struct ContentView: View {
                             .cornerRadius(16)
                         }
                         .frame(maxWidth: .infinity, alignment: .topLeading)
-                        .saveSize(in: $geo5)
                         .frame(height: 115, alignment: .topLeading)
-                        .background(Color(hex: 0xffffff, alpha: 0))
+                        .background(.white.opacity(0))
+                        .saveSize(in: $geo5)
                     }
                     .padding([.horizontal, .top], 16)
                     .padding(.bottom, 48)
                     .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .top)
-                    .background(Color(hex: 0xffffff))
+                    .background(.white)
                     .opacity(0.75)
                     .clipped()
                     .cornerRadius(32, corners: [.topRight, .topLeft])
@@ -337,7 +321,7 @@ struct ContentView: View {
                     }
                 }
                 .frame(minWidth: UIScreen.main.bounds.width, maxWidth: .infinity, minHeight: UIScreen.main.bounds.height, maxHeight: .infinity, alignment: .topLeading )
-                .background(Color(hex: 0xffffff).ignoresSafeArea())
+                .background(Color.white.ignoresSafeArea())
                 .saveSize(in: $geo)
             }
             .frame(maxWidth: UIScreen.main.bounds.width, alignment: .topLeading)
@@ -463,7 +447,7 @@ struct ContentView: View {
               .font(.custom("SFProText-Medium", size: 11))
               .tracking(0.07)
               .clipped()
-              .foregroundStyle(Color(hex: 0xffffff))
+              .foregroundStyle(.white)
               .fixedSize(horizontal: false, vertical: true)
               .lineSpacing(lineSpacing)
         }
@@ -799,14 +783,14 @@ struct ContentView: View {
         }
     }
 }
-//extension Color {
-//    init(hex: Int, alpha: Double = 1.0) {
-//        let red = Double((hex & 0xff0000) >> 16) / 255.0
-//        let green = Double((hex & 0xff00) >> 8) / 255.0
-//        let blue = Double((hex & 0xff) >> 0) / 255.0
-//        self.init(.sRGB, red: red, green: green, blue: blue, opacity: alpha)
-//    }
-//}
+extension Color {
+    init(hex: Int, alpha: Double = 1.0) {
+        let red = Double((hex & 0xff0000) >> 16) / 255.0
+        let green = Double((hex & 0xff00) >> 8) / 255.0
+        let blue = Double((hex & 0xff) >> 0) / 255.0
+        self.init(.sRGB, red: red, green: green, blue: blue, opacity: alpha)
+    }
+}
 // MARK: Enables setting individual vales per corner
 struct RoundedCorner: Shape {
     var radius: CGFloat = .infinity
@@ -826,23 +810,23 @@ extension Text {
         ModifiedContent(content: self, modifier: style)
     }
 }
-//// MARK: Allows for percentage based layouts
-//struct SizeCalculator: ViewModifier {
-//    @Binding var size: CGSize
-//    func body(content: Content) -> some View {
-//        content.background(
-//        GeometryReader { proxy in
-//            Color.clear
-//            .onAppear { size = proxy.size }
-//        }
-//        )
-//    }
-//}
-//extension View {
-//    func saveSize(in size: Binding<CGSize>) -> some View {
-//        modifier(SizeCalculator(size: size))
-//    }
-//}
+// MARK: Allows for percentage based layouts
+struct SizeCalculator: ViewModifier {
+    @Binding var size: CGSize
+    func body(content: Content) -> some View {
+        content.background(
+        GeometryReader { proxy in
+            Color.clear
+            .onAppear { size = proxy.size }
+        }
+        )
+    }
+}
+extension View {
+    func saveSize(in size: Binding<CGSize>) -> some View {
+        modifier(SizeCalculator(size: size))
+    }
+}
 #Preview {
     ContentView()
 }
