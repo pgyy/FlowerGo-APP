@@ -11,9 +11,10 @@ extension CLLocationCoordinate2D {
 struct MPV: View {
     @State private var showAnnotations = false
     @State private var mapItems: [MKMapItem] = []
+    @State private var selectedTag: Int?
 
     var body: some View {
-        Map {
+        Map(selection: $selectedTag) {
             Annotation(
                 "Starting Pos",
                 coordinate: .starting,
@@ -23,19 +24,29 @@ struct MPV: View {
                     .padding(4)
                     .foregroundColor(.white)
                     .background(Color.indigo)
-                    .cornerRadius(4)
+                    .cornerRadius(10)
             }
             
             if showAnnotations {
-                ForEach(mapItems, id: \.self) { mapItem in
+                ForEach(Array(mapItems.enumerated()), id: \.element) { index, mapItem in
                     let coordinate = mapItem.placemark.coordinate
                     let title = mapItem.name ?? "Unknown"
+                    let isSelected = (selectedTag == index)
                     Annotation(title, coordinate: coordinate, anchor: .bottom) {
-                        Image(systemName: "mappin")
-                            .padding(4)
-                            .foregroundColor(.white)
-                            .background(Color.red)
-                            .cornerRadius(4)
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 15)
+                                .fill(isSelected ? Color.blue : Color.green)
+                            RoundedRectangle(cornerRadius: 15)
+                                .stroke(.secondary, lineWidth: 3)
+                            Image(systemName: systemImageName(for: title))
+                                .padding(5)
+                                .foregroundColor(.white)
+                        }
+                        .scaleEffect(isSelected ? 1.5 : 1.0)
+                        .animation(.spring(), value: isSelected)
+                        .onTapGesture {
+                            selectedTag = index
+                        }
                     }
                 }
             }
@@ -77,6 +88,10 @@ struct MPV: View {
         // Update state
         mapItems = [roseMapItem, petuniaMapItem, dahliaMapItem]
         showAnnotations = true
+    }
+
+    func systemImageName(for title: String) -> String {
+        return "camera.macro.circle.fill"
     }
 }
 
