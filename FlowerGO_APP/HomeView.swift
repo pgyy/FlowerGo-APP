@@ -108,88 +108,88 @@ struct ContentView: View {
                         .cornerRadius(16)
 
                         VStack(alignment: .leading, spacing:12) {
-                            HStack(spacing: 8) {
+                            HStack(spacing: 10) {
                                 Image(systemName: "flag.circle.fill")
-                                    .font(.system(size: 17, weight: .regular))
+                                    .font(.system(size: 30, weight: .regular))
                                     .imageScale(.small)
                                     .foregroundStyle(.white)
                                     .frame(width: 24, height: 24)
                                     .clipped()
                                     .background(Color(hex: 0x5856d6))
                                     .cornerRadius(64)
-                                Text("Tutorial")
+                                Text("Guide")
                                     .textStyle(Callout())
                             }
                             .frame(width: 321, alignment: .topLeading)
                             .saveSize(in: $geo2)
                             HStack(spacing:8) {
-                                Image(systemName: "mountain.2.fill")
-                                  .font(.system(size: 14, weight: .regular))
+                                Image(systemName: "1.circle.fill")
+                                  .font(.system(size: 30, weight: .regular))
                                   .imageScale(.small)
                                   .foregroundStyle(.white)
                                   .frame(width: 32, height: 32)
                                   .clipped()
                                   .background(Color(hex: 0x34c759)).cornerRadius(64)
                                 VStack(alignment: .leading, spacing:0) {
-                                    Text("Mariposa Grove")
+                                    Text("Look for Flowers")
                                       .textStyle(Callout_1())
-                                    Text("Largest sequoia trees grove ")
+                                    Text("Walk around campus to find flowers")
                                       .textStyle(Footnote())
                                 }
                                 .frame(width: 240, alignment: .topLeading)
                             }
                             .frame(maxWidth: .infinity, alignment: .leading)
                             HStack(spacing:8) {
-                                Image(systemName: "tree.fill")
-                                  .font(.system(size: 17, weight: .regular))
+                                Image(systemName: "2.circle.fill")
+                                  .font(.system(size: 30, weight: .regular))
                                   .imageScale(.small)
                                   .foregroundStyle(.white)
                                   .frame(width: 32, height: 32)
                                   .clipped()
                                   .background(Color(hex: 0x00c7be)).cornerRadius(64)
                                 VStack(alignment: .leading, spacing:0) {
-                                    Text("Sentinel Dome")
+                                    Text("Take a Picture")
                                       .textStyle(Callout_2())
-                                    Text("Granite dome known for Jeffrey Pine")
+                                    Text("Take a picture of the flower you found")
                                       .textStyle(Footnote_1())
                                 }
                                 .frame(width: 240, alignment: .topLeading)
                             }
                             .frame(maxWidth: .infinity, alignment: .leading)
                             HStack(spacing:8) {
-                                Image(systemName: "figure.skiing.downhill")
-                                  .font(.system(size: 17, weight: .regular))
+                                Image(systemName: "3.circle.fill")
+                                  .font(.system(size: 25, weight: .regular))
                                   .foregroundStyle(.white)
                                   .frame(width: 32, height: 32)
                                   .clipped()
                                   .background(Color(hex: 0xff3b30)).cornerRadius(64)
                                 VStack(alignment: .leading, spacing:0) {
-                                    Text("Badger Ski Area")
+                                    Text("Learn about them")
                                       .textStyle(Callout_3())
-                                    Text("Granite dome known for Jeffrey Pine")
+                                    Text("Read the description and function")
                                       .textStyle(Footnote_2())
                                 }
                                 .frame(width: 240, alignment: .topLeading)
                             }
                             .frame(maxWidth: .infinity, alignment: .leading)
                             HStack(spacing:8) {
-                                Image(systemName: "water.waves.and.arrow.down")
-                                  .font(.system(size: 17, weight: .regular))
+                                Image(systemName: "4.circle.fill")
+                                  .font(.system(size: 25, weight: .regular))
                                   .foregroundStyle(.white)
                                   .frame(width: 32, height: 32)
                                   .clipped()
                                   .background(Color(hex: 0x32ade6)).cornerRadius(64)
                                 VStack(alignment: .leading, spacing:0) {
-                                    Text("Yosemite Falls")
+                                    Text("Collect")
                                       .textStyle(Callout_4())
-                                    Text("Highest waterfall in Yosemite Park")
+                                    Text("Collect the flower if you want!")
                                       .textStyle(Footnote_3())
                                 }
                                 .frame(width: 240, alignment: .topLeading)
                             }
                             .frame(maxWidth: .infinity, alignment: .leading)
-                            Text("This itinerary usually takes 2-3 days. You can expand to more days if you want to take a deep tour to any of these locations.")
-                            .textStyle(Footnote_4())
+//                            Text("This itinerary usually takes 2-3 days. You can expand to more days if you want to take a deep tour to any of these locations.")
+//                            .textStyle(Footnote_4())
                         }
                         .padding(16)
                         .frame(maxWidth: .infinity, alignment: .topLeading)

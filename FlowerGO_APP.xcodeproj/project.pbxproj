@@ -24,6 +24,8 @@
 		79738A692C3D798C0063959A /* FlowerGO_APPUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79738A682C3D798C0063959A /* FlowerGO_APPUITestsLaunchTests.swift */; };
 		79C847D52C4C63F900069763 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C847D42C4C63F900069763 /* LocationManager.swift */; };
 		79C847DE2C4F393C00069763 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C847DD2C4F393C00069763 /* HomeView.swift */; };
+		79C847E02C505A4600069763 /* MPV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C847DF2C505A4600069763 /* MPV.swift */; };
+		79C847E22C508DDE00069763 /* MPV-Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C847E12C508DDE00069763 /* MPV-Buttons.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +67,8 @@
 		79C847D42C4C63F900069763 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		79C847D62C4C685D00069763 /* FlowerGO-APP-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "FlowerGO-APP-Info.plist"; sourceTree = SOURCE_ROOT; };
 		79C847DD2C4F393C00069763 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		79C847DF2C505A4600069763 /* MPV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPV.swift; sourceTree = "<group>"; };
+		79C847E12C508DDE00069763 /* MPV-Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MPV-Buttons.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +104,8 @@
 				7939188C2C3EC29500454DCE /* UserView.swift */,
 				7939188A2C3EC26F00454DCE /* GardenView.swift */,
 				7939188E2C3EC47400454DCE /* MapView.swift */,
+				79C847DF2C505A4600069763 /* MPV.swift */,
+				79C847E12C508DDE00069763 /* MPV-Buttons.swift */,
 				793918882C3EC20D00454DCE /* CamView.swift */,
 				79C847DD2C4F393C00069763 /* HomeView.swift */,
 			);
@@ -298,7 +304,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				793918912C3EC90500454DCE /* CombatView.swift in Sources */,
+				79C847E02C505A4600069763 /* MPV.swift in Sources */,
 				79738A502C3D798C0063959A /* Persistence.swift in Sources */,
+				79C847E22C508DDE00069763 /* MPV-Buttons.swift in Sources */,
 				79C847DE2C4F393C00069763 /* HomeView.swift in Sources */,
 				79738A492C3D798B0063959A /* PreView.swift in Sources */,
 				79C847D52C4C63F900069763 /* LocationManager.swift in Sources */,
