@@ -17,35 +17,6 @@ struct ContentView: View {
         VStack(alignment: .leading) {
             ScrollView(.vertical, showsIndicators: true) {
                 VStack (spacing: 16) {
-                    HStack(alignment: .top, spacing:0) {
-                        Image(systemName: "chevron.backward")
-                          .font(.system(size: 24, weight: .semibold))
-                          .imageScale(.small)
-                          .foregroundStyle(.black)
-                          .opacity(0.25)
-                          .frame(width: 44, height: 44)
-                          .clipped()
-                          .background(.white)
-                          .opacity(0.85)
-                          .cornerRadius(64)
-                        Spacer()
-                        VStack(alignment: .leading, spacing:0) {
-                            Image(systemName: "bookmark.fill")
-                              .font(.system(size: 22, weight: .medium))
-                              .imageScale(.small)
-                              .foregroundStyle(.black)
-                              .opacity(0.25)
-                              .frame(width: 44, height: 44)
-                              .clipped()
-                              .background(.white)
-                              .opacity(0.85)
-                              .cornerRadius(64)
-                        }
-                        .frame(width: 44, height: 44, alignment: .topLeading)
-                    }
-                    .padding(.top, safeAreaTop)
-                    .padding(.horizontal, 16)
-                    .frame(maxWidth: .infinity, alignment: .topLeading)
                     VStack(spacing:12) {
                         ZStack() {}
                         .frame(width: geo1.width * 0.1, height: 4, alignment: .topLeading)
@@ -73,6 +44,8 @@ struct ContentView: View {
                                     .cornerRadius(64)
                                 Text("Flowers")
                                     .textStyle(Callout())
+                                Text("swipe to see more")
+                                  .textStyle(Footnote())
                             }
                             .padding(16)
                             .frame(maxWidth: .infinity, alignment: .leading)
@@ -188,8 +161,6 @@ struct ContentView: View {
                                 .frame(width: 240, alignment: .topLeading)
                             }
                             .frame(maxWidth: .infinity, alignment: .leading)
-//                            Text("This itinerary usually takes 2-3 days. You can expand to more days if you want to take a deep tour to any of these locations.")
-//                            .textStyle(Footnote_4())
                         }
                         .padding(16)
                         .frame(maxWidth: .infinity, alignment: .topLeading)
@@ -223,78 +194,14 @@ struct ContentView: View {
                             }
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .clipped()
-                            TextField_1()
+//                            TextField_1()
                         }
                         .padding(.bottom, 8)
                         .frame(maxWidth: .infinity, alignment: .topLeading)
                         .background(Color(hex: 0xebebeb))
                         .clipped()
                         .cornerRadius(16)
-                        VStack(alignment: .leading, spacing:12) {
-                            VStack(alignment: .leading, spacing:8) {
-                                Text("Weather")
-                                  .textStyle(Subhead_SemiBold_2())
-                                ZStack() {}
-                                .frame(maxWidth: .infinity, alignment: .topLeading)
-                                .frame(height: 1, alignment: .topLeading)
-                                .background(Color(hex: 0xd1d1d1))
-                                .opacity(0.4)
-                            }
-                            .frame(width: 321, alignment: .topLeading)
-                            .saveSize(in: $geo4)
-                            Chart_1()
-                            Text("If you don't want your Yosemite experience to be limited by road, trail, and campground closures, your best bet is to visit between June and September, when is several degrees warmer.")
-                            .textStyle(Footnote_5())
-                        }
-                        .padding(16)
-                        .frame(maxWidth: .infinity, alignment: .topLeading)
-                        .background(Color(hex: 0xebebeb))
-                        .clipped()
-                        .cornerRadius(16)
-                        HStack(alignment: .top, spacing:8) {
-                            VStack(alignment: .leading, spacing:0) {
-                                Image(systemName: "desktopcomputer")
-                                  .font(.system(size: 22, weight: .regular))
-                                  .symbolRenderingMode(.hierarchical)
-                                  .foregroundStyle(Color(hex: 0x8e8e93))
-                                  .frame(width: 32, height: 32)
-                                Spacer()
-                                VStack(alignment: .leading, spacing:2) {
-                                    Text("Website")
-                                      .textStyle(Subhead_SemiBold_3())
-                                    Text("yosemitepark.com")
-                                      .textStyle(Footnote_6())
-                                }
-                            }
-                            .padding(16)
-                            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
-                            .background(Color(hex: 0xebebeb))
-                            .clipped()
-                            .cornerRadius(16)
-                            VStack(alignment: .leading, spacing:0) {
-                                Image(systemName: "phone.fill")
-                                  .font(.system(size: 22, weight: .regular))
-                                  .symbolRenderingMode(.hierarchical)
-                                  .foregroundStyle(Color(hex: 0x8e8e93))
-                                  .frame(width: 32, height: 32)
-                                Spacer()
-                                VStack(alignment: .leading, spacing:2) {
-                                    Text("Phone")
-                                      .textStyle(Subhead_SemiBold_4())
-                                    Text("+1 34 555 888")
-                                      .textStyle(Footnote_7())
-                                }
-                            }
-                            .padding(16)
-                            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
-                            .background(Color(hex: 0xebebeb))
-                            .clipped()
-                            .cornerRadius(16)
-                        }
-                        .frame(maxWidth: .infinity, alignment: .topLeading)
-                        .frame(height: 115, alignment: .topLeading)
-                        .background(.white.opacity(0))
-                        .saveSize(in: $geo5)
+
                     }
                     .padding([.horizontal, .top], 16)
                     .padding(.bottom, 48)
@@ -303,7 +210,7 @@ struct ContentView: View {
                     .opacity(0.75)
                     .clipped()
                     .cornerRadius(32, corners: [.topRight, .topLeft])
-                        .offset(y: 350)
+                        .offset(y: 50)
                     }
                 }
                 .frame(minWidth: UIScreen.main.bounds.width, maxWidth: .infinity, minHeight: UIScreen.main.bounds.height, maxHeight: .infinity, alignment: .topLeading )
@@ -312,63 +219,13 @@ struct ContentView: View {
             }
             .frame(maxWidth: UIScreen.main.bounds.width, alignment: .topLeading)
             .ignoresSafeArea()
-            .background(
-            MapView( mapType: .standard, animated: false, altitude: 100000, pins: [], showsUserLocation: true)
-            .edgesIgnoringSafeArea(.all)
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            , alignment: .center)
+//            .background(
+//            MapView( mapType: .standard, animated: false, altitude: 100000, pins: [], showsUserLocation: true)
+//            .edgesIgnoringSafeArea(.all)
+//            .frame(maxWidth: .infinity, maxHeight: .infinity)
+//            , alignment: .center)
         }
-        public struct TextField_1: View {
-            @State private var input: String = ""
-            var body: some View {
-                TextField("", text: $input, prompt: Text("Your trip notes here…").foregroundStyle(Color(hex: 0xaeaeb2)))
-                // MARK: Add SFProText-Regular file to Xcode, and reference it below:
-                  .font(.custom("SFProText-Regular", size: 15))
-                  .foregroundStyle(Color(hex: 0x323232))
-                  .padding(.top, 8)
-                  .padding(.leading, 12)
-                  .padding(8)
-                  .frame(width:  349)
-                  .frame(minHeight:  40)
-            }
-        }
-        public struct Chart_1: View {
-            private var chartData_w3x: [PlayChartPoint] = [.init(x: 0.00, y: 147.19, category: "Jul"), .init(x: 1.00, y: 119.07, category: "Jul"), .init(x: 2.00, y: 142.83, category: "Jul"), .init(x: 3.00, y: 118.92, category: "Jul"), .init(x: 4.00, y: 110.20, category: "Jul"), .init(x: 5.00, y: 136.32, category: "Jul"), .init(x: 6.00, y: 95.33, category: "Jul"), .init(x: 0.00, y: 98.43, category: "Aug"), .init(x: 1.00, y: 105.74, category: "Aug"), .init(x: 2.00, y: 145.95, category: "Aug"), .init(x: 3.00, y: 94.38, category: "Aug"), .init(x: 4.00, y: 122.66, category: "Aug"), .init(x: 5.00, y: 144.40, category: "Aug"), .init(x: 6.00, y: 83.17, category: "Aug"), .init(x: 0.00, y: 171.46, category: "Sep"), .init(x: 1.00, y: 143.34, category: "Sep"), .init(x: 2.00, y: 160.83, category: "Sep"), .init(x: 3.00, y: 136.92, category: "Sep"), .init(x: 4.00, y: 132.67, category: "Sep"), .init(x: 5.00, y: 158.79, category: "Sep"), .init(x: 6.00, y: 152.18, category: "Sep")]
-            var body: some View {
-                Chart {
-                    ForEach(chartData_w3x) { item in
-                        LineMark(
-                        x: .value("x", item.x),
-                        y: .value("y", item.y)
-                        )
-                          .foregroundStyle(by: .value("Category", item.category))
-                    }
-                    .interpolationMethod(.monotone)
-                }
-                .chartForegroundStyleScale(
-                domain: ["Jul", "Aug", "Sep"],
-                range: [Color(hex: 0xff3b30), Color(hex: 0xff9500), Color(hex: 0xffcc00)]
-                )
-                .chartXAxis{
-                AxisMarks(
-                content: { value in
-                }
-                )
-            }
-            .chartYAxis{
-            AxisMarks(
-            position: .leading,
-            content: { value in
-                AxisGridLine()
-                AxisValueLabel()
-            }
-            )
-        }
-        .chartLegend(position: .bottom, alignment: .center, spacing: 8)
-        .frame(maxWidth: .infinity)
-        .frame(height: 216)
-    }
-}
+
     // MARK: additional structs
     struct Large_Title: ViewModifier {
         var lineSpacing: CGFloat {

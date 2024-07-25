@@ -106,8 +106,8 @@
 				7939188E2C3EC47400454DCE /* MapView.swift */,
 				79C847DF2C505A4600069763 /* MPV.swift */,
 				79C847E12C508DDE00069763 /* MPV-Buttons.swift */,
-				793918882C3EC20D00454DCE /* CamView.swift */,
 				79C847DD2C4F393C00069763 /* HomeView.swift */,
+				793918882C3EC20D00454DCE /* CamView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
