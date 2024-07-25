@@ -13,7 +13,7 @@ struct MPV: View {
     @State private var mapItems: [MKMapItem] = []
     @State private var selectedTag: Int?
     @State private var position: MapCameraPosition = .camera(
-        MapCamera(centerCoordinate:.starting, distance: 100, heading: 242, pitch: 60))
+        MapCamera(centerCoordinate: .starting, distance: 400, heading: 242, pitch: 60))
 
     var body: some View {
         Map(position: $position, selection: $selectedTag) {
@@ -44,7 +44,7 @@ struct MPV: View {
                                 .padding(5)
                                 .foregroundColor(.white)
                         }
-                        .scaleEffect(isSelected ? 1.5 : 1.0)
+                        .scaleEffect(isSelected ? 3.0 : 2.0)
                         .animation(.spring(), value: isSelected)
                         .onTapGesture {
                             selectedTag = index
@@ -100,6 +100,20 @@ struct MPV: View {
         // Update state
         mapItems = [roseMapItem, petuniaMapItem, dahliaMapItem]
         showAnnotations = true
+        
+        // Adjust camera position to show all annotations
+        adjustCameraPosition()
+    }
+
+    func adjustCameraPosition() {
+        let coordinates = mapItems.map { $0.placemark.coordinate }
+        var mapRect = MKMapRect.null
+        for coordinate in coordinates {
+            let point = MKMapPoint(coordinate)
+            mapRect = mapRect.union(MKMapRect(x: point.x, y: point.y, width: 0, height: 0))
+        }
+        let cameraCenter = CLLocationCoordinate2D(latitude: mapRect.midY, longitude: mapRect.midX)
+        position = .camera(MapCamera(centerCoordinate: cameraCenter, distance: mapRect.size.width, heading: 0, pitch: 0))
     }
 
     func systemImageName(for title: String) -> String {
