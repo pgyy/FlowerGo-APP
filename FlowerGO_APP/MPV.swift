@@ -16,69 +16,104 @@ struct MPV: View {
         MapCamera(centerCoordinate: .starting, distance: 400, heading: 242, pitch: 60))
 
     var body: some View {
-        Map(position: $position, selection: $selectedTag) {
-            Annotation(
-                "Starting Pos",
-                coordinate: .starting,
-                anchor: .bottom
-            ) {
-                Image(systemName: "figure.wave")
-                    .padding(4)
-                    .foregroundColor(.white)
-                    .background(Color.indigo)
-                    .cornerRadius(10)
+        ZStack {
+            Map(position: $position, selection: $selectedTag) {
+                Annotation(
+                    "Starting Pos",
+                    coordinate: .starting,
+                    anchor: .bottom
+                ) {
+                    Image(systemName: "figure.wave")
+                        .padding(4)
+                        .foregroundColor(.white)
+                        .background(Color.indigo)
+                        .cornerRadius(10)
+                }
+                
+                if showAnnotations {
+                    ForEach(Array(mapItems.enumerated()), id: \.element) { index, mapItem in
+                        let coordinate = mapItem.placemark.coordinate
+                        let title = mapItem.name ?? "Unknown"
+                        let isSelected = (selectedTag == index)
+                        Annotation(title, coordinate: coordinate, anchor: .bottom) {
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 15)
+                                    .fill(isSelected ? Color.blue : Color.green)
+                                RoundedRectangle(cornerRadius: 15)
+                                    .stroke(.secondary, lineWidth: 3)
+                                Image(systemName: systemImageName(for: title))
+                                    .padding(5)
+                                    .foregroundColor(.white)
+                            }
+                            .scaleEffect(isSelected ? 3.0 : 2.0)
+                            .animation(.spring(), value: isSelected)
+                            .onTapGesture {
+                                selectedTag = index
+                            }
+                        }
+                    }
+                }
+                
+                UserAnnotation()
+                
             }
-            
+            .mapStyle(.standard(elevation: .automatic))
+            .safeAreaInset(edge: .bottom) {
+                VStack {
+                    HStack {
+                        Spacer()
+                        Button(action: {
+                            toggleAnnotations()
+                        }) {
+                            Label(showAnnotations ? "Hide Nearby Flowers" : "Show Nearby Flowers", systemImage: "mappin.and.ellipse")
+                        }
+                        .buttonStyle(.borderedProminent)
+                        Spacer()
+                    }
+                    .padding(.top)
+                }
+            }
+            .mapControls {
+                MapUserLocationButton()
+                MapCompass()
+                MapScaleView()
+            }
+
             if showAnnotations {
-                ForEach(Array(mapItems.enumerated()), id: \.element) { index, mapItem in
-                    let coordinate = mapItem.placemark.coordinate
-                    let title = mapItem.name ?? "Unknown"
-                    let isSelected = (selectedTag == index)
-                    Annotation(title, coordinate: coordinate, anchor: .bottom) {
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 15)
-                                .fill(isSelected ? Color.blue : Color.green)
-                            RoundedRectangle(cornerRadius: 15)
-                                .stroke(.secondary, lineWidth: 3)
-                            Image(systemName: systemImageName(for: title))
-                                .padding(5)
-                                .foregroundColor(.white)
+                TabView(selection: $selectedTag) {
+                    ForEach(Array(mapItems.enumerated()), id: \.element) { index, mapItem in
+                        let coordinate = mapItem.placemark.coordinate
+                        let title = mapItem.name ?? "Unknown"
+                        
+                        VStack {
+                            Text(title)
+                                .font(.headline)
+                                .padding(.top)
+                            
+                            Button(action: {
+                                withAnimation {
+                                    position = .camera(MapCamera(centerCoordinate: coordinate, distance: 400, heading: 242, pitch: 60))
+                                }
+                            }) {
+                                Text("Navigate to \(title)")
+                                    .padding()
+                                    .background(Color.blue)
+                                    .foregroundColor(.white)
+                                    .cornerRadius(10)
+                            }
+                            .padding(.bottom)
                         }
-                        .scaleEffect(isSelected ? 3.0 : 2.0)
-                        .animation(.spring(), value: isSelected)
-                        .onTapGesture {
-                            selectedTag = index
-                        }
+                        .tag(index)
+                        .padding()
                     }
                 }
-            }
-            
-            UserAnnotation()
-            
-        }
-        .mapStyle(.standard(elevation: .automatic))
-        .safeAreaInset(edge: .bottom) {
-            VStack {
-                HStack {
-                    Spacer()
-                    Button(action: {
-                        search(for: "flower")
-                    }) {
-                        Label("Show Nearby Flowers", systemImage: "mappin.and.ellipse")
-                    }
-                    .buttonStyle(.borderedProminent)
-                    Spacer()
-                }
-                .padding(.top)
+                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+                .frame(width: 200, height: 100)
+//                .cornerRadius(100)
+                .background(Color(UIColor.systemBackground).opacity(0.5))
+                .padding(.bottom, 400)
             }
         }
-        
-        .mapControls {
-            MapUserLocationButton()
-            MapCompass()
-            MapScaleView()
-        }
-        
     }
     
     func search(for query: String) {
@@ -100,20 +135,14 @@ struct MPV: View {
         // Update state
         mapItems = [roseMapItem, petuniaMapItem, dahliaMapItem]
         showAnnotations = true
-        
-        // Adjust camera position to show all annotations
-        adjustCameraPosition()
     }
 
-    func adjustCameraPosition() {
-        let coordinates = mapItems.map { $0.placemark.coordinate }
-        var mapRect = MKMapRect.null
-        for coordinate in coordinates {
-            let point = MKMapPoint(coordinate)
-            mapRect = mapRect.union(MKMapRect(x: point.x, y: point.y, width: 0, height: 0))
+    func toggleAnnotations() {
+        if showAnnotations {
+            showAnnotations = false
+        } else {
+            search(for: "flower")
         }
-        let cameraCenter = CLLocationCoordinate2D(latitude: mapRect.midY, longitude: mapRect.midX)
-        position = .camera(MapCamera(centerCoordinate: cameraCenter, distance: mapRect.size.width, heading: 0, pitch: 0))
     }
 
     func systemImageName(for title: String) -> String {
