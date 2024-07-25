@@ -12,9 +12,11 @@ struct MPV: View {
     @State private var showAnnotations = false
     @State private var mapItems: [MKMapItem] = []
     @State private var selectedTag: Int?
+    @State private var position: MapCameraPosition = .camera(
+        MapCamera(centerCoordinate:.starting, distance: 100, heading: 242, pitch: 60))
 
     var body: some View {
-        Map(selection: $selectedTag) {
+        Map(position: $position, selection: $selectedTag) {
             Annotation(
                 "Starting Pos",
                 coordinate: .starting,
@@ -50,8 +52,11 @@ struct MPV: View {
                     }
                 }
             }
+            
+            UserAnnotation()
+            
         }
-        .mapStyle(.standard(elevation: .realistic))
+        .mapStyle(.standard(elevation: .automatic))
         .safeAreaInset(edge: .bottom) {
             VStack {
                 HStack {
@@ -67,6 +72,13 @@ struct MPV: View {
                 .padding(.top)
             }
         }
+        
+        .mapControls {
+            MapUserLocationButton()
+            MapCompass()
+            MapScaleView()
+        }
+        
     }
     
     func search(for query: String) {
