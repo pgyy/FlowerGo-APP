@@ -207,7 +207,7 @@ struct ContentView: View {
                     .padding(.bottom, 48)
                     .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .top)
                     .background(.white)
-                    .opacity(0.75)
+                    .opacity(0.9)
                     .clipped()
                     .cornerRadius(32, corners: [.topRight, .topLeft])
                         .offset(y: 50)
