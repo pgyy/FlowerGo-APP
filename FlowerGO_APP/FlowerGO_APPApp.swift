@@ -11,6 +11,10 @@ import SwiftUI
 struct FlowerGO_APPApp: App {
     let persistenceController = PersistenceController.shared
 
+//    init() {
+//        setupTabBarAppearance()
+//    }
+
     var body: some Scene {
         WindowGroup {
             PreView()

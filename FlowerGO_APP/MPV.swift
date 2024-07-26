@@ -46,7 +46,7 @@ struct MPV: View {
                             let coordinate = mapItem.placemark.coordinate
                             let title = mapItem.name ?? "Unknown"
                             let isSelected = (selectedTag == index)
-                            Annotation(title, coordinate: coordinate, anchor: .bottom) {
+                            Annotation("", coordinate: coordinate, anchor: .bottom) {
                                 ZStack {
                                     RoundedRectangle(cornerRadius: 15)
                                         .fill(isSelected ? Color.blue : Color.green)
