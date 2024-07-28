@@ -1,22 +1,8 @@
-////
-////  CamView.swift
-////  FlowerGO_APP
-////
-////  Created by Peigen Yuan on 7/10/24.
-////
 //
-//import SwiftUI
+//  CamView.swift
+//  FlowerGO_APP
 //
-//struct CamView: View {
-//    var body: some View {
-//        Text("CamView")
-//    }
-//}
-//
-//#Preview {
-//    CamView()
-//}
-//
+//  Created by Peigen Yuan on 7/10/24.
 //
 import ARKit
 import AVKit
@@ -67,7 +53,7 @@ struct CamView: View {
     var body: some View {
         NavigationView {
             ViewControllerWrapper()
-//                .edgesIgnoringSafeArea(.all)  // If you want the ViewController to take the full screen
+                .edgesIgnoringSafeArea(.all) 
         }
     }
 }
