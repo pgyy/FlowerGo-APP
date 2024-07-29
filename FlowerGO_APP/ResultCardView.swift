@@ -34,3 +34,7 @@ struct ResultCardView_Previews: PreviewProvider {
         ResultCardView(result: "Sample Result: confidence 0.95")
     }
 }
+
+#Preview {
+    ResultCardView(result: "Sample Result: confidence 0.95")
+}
