@@ -31,6 +31,8 @@
 		79C847EA2C5330CF00069763 /* FlowerClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 79C847E92C5330CE00069763 /* FlowerClassifier.mlmodel */; };
 		79C847EC2C5336B800069763 /* FC_new.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 79C847EB2C5336B800069763 /* FC_new.mlmodel */; };
 		79C847EE2C53411B00069763 /* TabBarAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C847ED2C53411B00069763 /* TabBarAppearance.swift */; };
+		79DACA362C570C7D00C46C66 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DACA352C570C7D00C46C66 /* ResultViewController.swift */; };
+		79DACA382C570EED00C46C66 /* ResultCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DACA372C570EED00C46C66 /* ResultCardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +81,8 @@
 		79C847E92C5330CE00069763 /* FlowerClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = FlowerClassifier.mlmodel; sourceTree = "<group>"; };
 		79C847EB2C5336B800069763 /* FC_new.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = FC_new.mlmodel; sourceTree = "<group>"; };
 		79C847ED2C53411B00069763 /* TabBarAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarAppearance.swift; sourceTree = "<group>"; };
+		79DACA352C570C7D00C46C66 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
+		79DACA372C570EED00C46C66 /* ResultCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultCardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +120,7 @@
 				7939188E2C3EC47400454DCE /* MapView.swift */,
 				79C847DF2C505A4600069763 /* MPV.swift */,
 				79C847E12C508DDE00069763 /* MPV-Buttons.swift */,
+				79DACA372C570EED00C46C66 /* ResultCardView.swift */,
 				79C847DD2C4F393C00069763 /* HomeView.swift */,
 				793918882C3EC20D00454DCE /* CamView.swift */,
 			);
@@ -148,7 +153,7 @@
 				79C847D62C4C685D00069763 /* FlowerGO-APP-Info.plist */,
 				793918852C3EBADC00454DCE /* Views */,
 				79738A462C3D798B0063959A /* FlowerGO_APPApp.swift */,
-				79C847E52C53283200069763 /* ViewController.swift */,
+				79DACA342C570C5A00C46C66 /* viewControllers */,
 				793918862C3EBB1600454DCE /* FlowerGoTabView.swift */,
 				79C847ED2C53411B00069763 /* TabBarAppearance.swift */,
 				79C847D42C4C63F900069763 /* LocationManager.swift */,
@@ -186,6 +191,15 @@
 				79738A682C3D798C0063959A /* FlowerGO_APPUITestsLaunchTests.swift */,
 			);
 			path = FlowerGO_APPUITests;
+			sourceTree = "<group>";
+		};
+		79DACA342C570C5A00C46C66 /* viewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				79C847E52C53283200069763 /* ViewController.swift */,
+				79DACA352C570C7D00C46C66 /* ResultViewController.swift */,
+			);
+			path = viewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -324,6 +338,7 @@
 				79738A502C3D798C0063959A /* Persistence.swift in Sources */,
 				79C847E22C508DDE00069763 /* MPV-Buttons.swift in Sources */,
 				79C847EE2C53411B00069763 /* TabBarAppearance.swift in Sources */,
+				79DACA382C570EED00C46C66 /* ResultCardView.swift in Sources */,
 				79C847DE2C4F393C00069763 /* HomeView.swift in Sources */,
 				79C847EA2C5330CF00069763 /* FlowerClassifier.mlmodel in Sources */,
 				79738A492C3D798B0063959A /* PreView.swift in Sources */,
@@ -333,6 +348,7 @@
 				7939188B2C3EC26F00454DCE /* GardenView.swift in Sources */,
 				79C847E42C531DE600069763 /* Resnet50.mlmodel in Sources */,
 				79738A472C3D798B0063959A /* FlowerGO_APPApp.swift in Sources */,
+				79DACA362C570C7D00C46C66 /* ResultViewController.swift in Sources */,
 				793918892C3EC20D00454DCE /* CamView.swift in Sources */,
 				7939188F2C3EC47400454DCE /* MapView.swift in Sources */,
 				79C847E62C53283200069763 /* ViewController.swift in Sources */,
