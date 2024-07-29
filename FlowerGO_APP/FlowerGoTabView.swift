@@ -1,6 +1,7 @@
 import SwiftUI
 import MapKit
 
+
 struct FlowerGoTabView: View {
     var body: some View {
         TabView {
@@ -16,24 +17,24 @@ struct FlowerGoTabView: View {
                     Text("Map")
                 }
             
-            GardenView()
+            CollectionView(viewModel: ResultViewModel())
                 .tabItem {
-                    Image(systemName: "apple.meditate")
-                    Text("Garden")
+                    Image(systemName: "camera.macro")
+                    Text("Collection")
                 }
             
             
             CombatView()
                 .tabItem {
-                    Image(systemName: "shield.lefthalf.filled")
-                    Text("Defend")
+                    Image(systemName: "apple.meditate")
+                    Text("Garden")
                 }
             
-            UserView()
-                .tabItem {
-                    Image(systemName: "person")
-                    Text("Me")
-                }
+//            UserView()
+//                .tabItem {
+//                    Image(systemName: "person")
+//                    Text("Me")
+//                }
         }
     }
 }
