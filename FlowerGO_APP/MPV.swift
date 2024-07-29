@@ -180,6 +180,7 @@ struct MPV: View {
                 .padding()
             }
         }
+        .navigationBarHidden(true)
     }
     
     func search(for query: String) {

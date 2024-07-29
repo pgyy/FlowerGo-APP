@@ -4,56 +4,38 @@
 //
 //  Created by Peigen Yuan on 7/10/24.
 //
-import ARKit
-import AVKit
-import UIKit
-import Vision
-import SwiftUI
-
-//struct CamView: View {
-//    var body: some View {
-//        VStack(spacing: 24) {
-//            VStack (spacing: 24) {
-//                VStack {
-//                    Text("Scan the flower!")
-//                        .font(.largeTitle)
-//                        .colorInvert()
-//                }
-//                VStack {
-////                    ViewControllerWrapper()
-////                        .edgesIgnoringSafeArea(.all)
-//                }
-//                .frame(maxWidth: .infinity, alignment: .topLeading)
-//                .frame(height: 500, alignment: .topLeading)
-//                .background(.black)
-//                .clipShape(RoundedRectangle(cornerRadius: 32, style: .continuous))
-//                ZStack() {
-//                    VStack {}
-//                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-//                    .background(Color(hex: 0xffa755))
-//                    .cornerRadius(50)
-//                }
-//                .padding(8)
-//                .frame(width: 90, height: 90, alignment: .center)
-//                .cornerRadius(50)
-//                .overlay(
-//                RoundedRectangle(cornerRadius: 50)
-//                .stroke(Color(hex: 0xffa755), style: StrokeStyle(lineWidth: 8, lineJoin: .round))
-//                )
-//            }
-//        }
-//        .frame(minWidth: UIScreen.main.bounds.width, maxHeight: UIScreen.main.bounds.height, alignment: .center)
-//        .background(Color(hex: 0xffead8).ignoresSafeArea())
-//    }
-//}
 import SwiftUI
 import UIKit
 
 struct CamView: View {
+    @State private var navigateToMapView = false
+    
     var body: some View {
-        NavigationView {
-            ViewControllerWrapper()
-                .edgesIgnoringSafeArea(.all) 
+        NavigationStack {
+            ZStack {
+                ViewControllerWrapper()
+                    .edgesIgnoringSafeArea(.all)
+                
+                VStack {
+                    Spacer()
+                    Button(action: {
+                        navigateToMapView = true
+                        
+                    }) {
+                        Text("Back to MapView")
+                            .font(.system(size: 18, weight: .bold))
+                            .foregroundColor(.white)
+                            .padding()
+                            .background(Color.blue)
+                            .cornerRadius(10)
+                    }
+                    .padding(.bottom, 100)
+                    
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
+                .background(NavigationLink(destination: MPV(), isActive: $navigateToMapView) { EmptyView() })
+            }
+            .navigationBarHidden(true)
         }
     }
 }

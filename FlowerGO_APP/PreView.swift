@@ -25,6 +25,7 @@ struct PreView: View {
                 FlowerGoTabView()
             }
         }
+        .navigationBarHidden(true)
     }
 }
 
