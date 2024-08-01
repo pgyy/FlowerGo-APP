@@ -7,12 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7910E45C2C5A892D000B55C1 /* CollectionClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7910E45B2C5A892D000B55C1 /* CollectionClass.swift */; };
+		7910E45C2C5A892D000B55C1 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7910E45B2C5A892D000B55C1 /* ViewModel.swift */; };
 		793918872C3EBB1600454DCE /* FlowerGoTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793918862C3EBB1600454DCE /* FlowerGoTabView.swift */; };
 		793918892C3EC20D00454DCE /* CamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793918882C3EC20D00454DCE /* CamView.swift */; };
 		7939188B2C3EC26F00454DCE /* GardenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7939188A2C3EC26F00454DCE /* GardenView.swift */; };
-		7939188D2C3EC29500454DCE /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7939188C2C3EC29500454DCE /* UserView.swift */; };
-		793918912C3EC90500454DCE /* CombatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793918902C3EC90500454DCE /* CombatView.swift */; };
 		79738A472C3D798B0063959A /* FlowerGO_APPApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79738A462C3D798B0063959A /* FlowerGO_APPApp.swift */; };
 		79738A492C3D798B0063959A /* PreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79738A482C3D798B0063959A /* PreView.swift */; };
 		79738A4B2C3D798C0063959A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79738A4A2C3D798C0063959A /* Assets.xcassets */; };
@@ -33,6 +31,7 @@
 		79C847EE2C53411B00069763 /* TabBarAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C847ED2C53411B00069763 /* TabBarAppearance.swift */; };
 		79DACA362C570C7D00C46C66 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DACA352C570C7D00C46C66 /* ResultViewController.swift */; };
 		79DACA382C570EED00C46C66 /* ResultCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DACA372C570EED00C46C66 /* ResultCardView.swift */; };
+		79DAD6462C5BF88000188025 /* ZoomableViewBG.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DAD6452C5BF88000188025 /* ZoomableViewBG.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,12 +52,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		7910E45B2C5A892D000B55C1 /* CollectionClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionClass.swift; sourceTree = "<group>"; };
+		7910E45B2C5A892D000B55C1 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		793918862C3EBB1600454DCE /* FlowerGoTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowerGoTabView.swift; sourceTree = "<group>"; };
 		793918882C3EC20D00454DCE /* CamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CamView.swift; sourceTree = "<group>"; };
 		7939188A2C3EC26F00454DCE /* GardenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardenView.swift; sourceTree = "<group>"; };
-		7939188C2C3EC29500454DCE /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
-		793918902C3EC90500454DCE /* CombatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombatView.swift; sourceTree = "<group>"; };
 		79738A432C3D798B0063959A /* FlowerGO_APP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlowerGO_APP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79738A462C3D798B0063959A /* FlowerGO_APPApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowerGO_APPApp.swift; sourceTree = "<group>"; };
 		79738A482C3D798B0063959A /* PreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreView.swift; sourceTree = "<group>"; };
@@ -83,6 +80,7 @@
 		79C847ED2C53411B00069763 /* TabBarAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarAppearance.swift; sourceTree = "<group>"; };
 		79DACA352C570C7D00C46C66 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		79DACA372C570EED00C46C66 /* ResultCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultCardView.swift; sourceTree = "<group>"; };
+		79DAD6452C5BF88000188025 /* ZoomableViewBG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomableViewBG.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,8 +112,6 @@
 			isa = PBXGroup;
 			children = (
 				79738A482C3D798B0063959A /* PreView.swift */,
-				793918902C3EC90500454DCE /* CombatView.swift */,
-				7939188C2C3EC29500454DCE /* UserView.swift */,
 				7939188A2C3EC26F00454DCE /* GardenView.swift */,
 				79C847DF2C505A4600069763 /* MPV.swift */,
 				79DACA372C570EED00C46C66 /* ResultCardView.swift */,
@@ -155,7 +151,7 @@
 				79DACA342C570C5A00C46C66 /* viewControllers */,
 				793918862C3EBB1600454DCE /* FlowerGoTabView.swift */,
 				79C847ED2C53411B00069763 /* TabBarAppearance.swift */,
-				7910E45B2C5A892D000B55C1 /* CollectionClass.swift */,
+				7910E45B2C5A892D000B55C1 /* ViewModel.swift */,
 				79C847D42C4C63F900069763 /* LocationManager.swift */,
 				79C847EB2C5336B800069763 /* FC_new.mlmodel */,
 				79C847E32C531DE600069763 /* Resnet50.mlmodel */,
@@ -198,6 +194,7 @@
 			children = (
 				79C847E52C53283200069763 /* ViewController.swift */,
 				79DACA352C570C7D00C46C66 /* ResultViewController.swift */,
+				79DAD6452C5BF88000188025 /* ZoomableViewBG.swift */,
 			);
 			path = viewControllers;
 			sourceTree = "<group>";
@@ -332,21 +329,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				793918912C3EC90500454DCE /* CombatView.swift in Sources */,
 				79C847EC2C5336B800069763 /* FC_new.mlmodel in Sources */,
 				79C847E02C505A4600069763 /* MPV.swift in Sources */,
 				79738A502C3D798C0063959A /* Persistence.swift in Sources */,
 				79BBE8AA2C5731B900830F32 /* CollectionView.swift in Sources */,
 				79C847EE2C53411B00069763 /* TabBarAppearance.swift in Sources */,
+				79DAD6462C5BF88000188025 /* ZoomableViewBG.swift in Sources */,
 				79DACA382C570EED00C46C66 /* ResultCardView.swift in Sources */,
 				79C847DE2C4F393C00069763 /* HomeView.swift in Sources */,
 				79C847EA2C5330CF00069763 /* FlowerClassifier.mlmodel in Sources */,
 				79738A492C3D798B0063959A /* PreView.swift in Sources */,
 				79C847D52C4C63F900069763 /* LocationManager.swift in Sources */,
 				79738A532C3D798C0063959A /* FlowerGO_APP.xcdatamodeld in Sources */,
-				7939188D2C3EC29500454DCE /* UserView.swift in Sources */,
 				7939188B2C3EC26F00454DCE /* GardenView.swift in Sources */,
-				7910E45C2C5A892D000B55C1 /* CollectionClass.swift in Sources */,
+				7910E45C2C5A892D000B55C1 /* ViewModel.swift in Sources */,
 				79C847E42C531DE600069763 /* Resnet50.mlmodel in Sources */,
 				79738A472C3D798B0063959A /* FlowerGO_APPApp.swift in Sources */,
 				79DACA362C570C7D00C46C66 /* ResultViewController.swift in Sources */,

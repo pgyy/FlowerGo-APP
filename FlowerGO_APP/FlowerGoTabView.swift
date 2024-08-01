@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct FlowerGoTabView: View {
+    @StateObject private var viewModel = ResultViewModel()
+    
     init() {
         UITabBar.appearance().unselectedItemTintColor = UIColor(Color(hex: 0x8e8e93))
     }
@@ -22,14 +24,14 @@ struct FlowerGoTabView: View {
                     Text("Map")
                 }
             NavigationView {
-                CollectionView(viewModel: ResultViewModel())
+                CollectionView(viewModel: viewModel)
             }
                 .tabItem {
                     Image(systemName: "camera.macro")
                     Text("Collection")
                 }
             NavigationView {
-                GardenView()
+                GardenView(viewModel: viewModel)
             }
                 .tabItem {
                     Image(systemName: "apple.meditate")
