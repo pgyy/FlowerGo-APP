@@ -22,7 +22,7 @@ struct CamView: View {
                         navigateToMapView = true
                         
                     }) {
-                        Text("Back to MapView")
+                        Text("Back to Home")
                             .font(.system(size: 18, weight: .bold))
                             .foregroundColor(.white)
                             .padding()
@@ -33,7 +33,7 @@ struct CamView: View {
                     
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
-                .background(NavigationLink(destination: MPV(), isActive: $navigateToMapView) { EmptyView() })
+                .background(NavigationLink(destination: FlowerGoTabView(), isActive: $navigateToMapView) { EmptyView() })
             }
             .navigationBarHidden(true)
         }

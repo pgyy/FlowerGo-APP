@@ -8,19 +8,6 @@
 import SwiftUI
 import Combine
 
-class ResultViewModel: ObservableObject {
-    @Published var expandedIndex: Int? = nil
-    @Published var collection: [String] = []
-    
-    func addToCollection(result: String) {
-        print("Adding \(result) to collection")
-        if !collection.contains(result) {
-            collection.append(result)
-        }
-        print("Current collection: \(collection)")
-    }
-}
-
 struct ResultCardView: View {
     var result: String
     @ObservedObject var viewModel: ResultViewModel
