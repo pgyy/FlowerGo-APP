@@ -124,7 +124,7 @@ struct MPV: View {
                             .buttonStyle(.borderedProminent)
                             Spacer()
                         }
-                        .padding(.top)
+                        .padding(.bottom)
                     }
                 }
                 .mapControls {

@@ -22,14 +22,15 @@ struct CamView: View {
                         navigateToMapView = true
                         
                     }) {
-                        Text("Back to Home")
-                            .font(.system(size: 18, weight: .bold))
+                        Image(systemName: "house")
+//                            .font(.system(size: 18, weight: .bold))
                             .foregroundColor(.white)
                             .padding()
                             .background(Color.blue)
                             .cornerRadius(10)
                     }
                     .padding(.bottom, 100)
+//                    .padding(.horizontal, 100)
                     
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)

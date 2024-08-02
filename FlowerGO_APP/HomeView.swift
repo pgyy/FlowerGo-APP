@@ -13,203 +13,189 @@ struct ContentView: View {
     @State var geo4: CGSize = .zero
     @State var geo5: CGSize = .zero
     @State var geo: CGSize = .zero
+    
+    @State private var navigateToMPV = false
     var body: some View {
-        VStack(alignment: .leading) {
-            ScrollView(.vertical, showsIndicators: true) {
-                VStack (spacing: 16) {
-                    VStack(spacing:12) {
-                        ZStack() {}
-                        .frame(width: geo1.width * 0.1, height: 4, alignment: .topLeading)
-                        .background(.white.opacity(0))
-                        .cornerRadius(16).opacity(0.1)
-                        VStack(alignment: .leading, spacing:8) {
-                            Text("Discovering Tufts")
-                              .textStyle(Large_Title())
-                              .bold()
-                            Text("You are on a mission to discover flowers on the campus of Tufts University. Get into position, and look around for the flowers below!")
-                              .textStyle(Subhead_SemiBold())
-                        }
-                        .frame(width: 345, alignment: .topLeading)
-                        .padding(.bottom, 12)
-                        
-                        VStack(alignment: .leading, spacing: 0) {
-                            HStack(spacing: 8) {
-                                Image(systemName: "camera.macro.circle.fill")
-                                    .font(.system(size: 17, weight: .regular))
-                                    .imageScale(.small)
-                                    .foregroundStyle(.white)
-                                    .frame(width: 24, height: 24)
-                                    .clipped()
-                                    .background(Color(hex: 0x5856d6))
-                                    .cornerRadius(64)
-                                Text("Flowers")
-                                    .textStyle(Callout())
-                                Text("swipe to see more")
-                                  .textStyle(Footnote())
+        NavigationStack {
+            VStack(alignment: .leading) {
+                ScrollView(.vertical, showsIndicators: false) {
+                    VStack (spacing: 16) {
+                        VStack(spacing:12) {
+                            ZStack() {}
+                                .frame(width: geo1.width * 0.1, height: 4, alignment: .topLeading)
+                                .background(.white.opacity(0))
+                                .cornerRadius(16).opacity(0.1)
+                            VStack(alignment: .leading, spacing:8) {
+                                Text("Discovering Tufts")
+                                    .textStyle(Large_Title())
+                                    .bold()
+                                Text("You are on a mission to discover flowers on the campus of Tufts University. Get into position, and look around for the flowers below!")
+                                    .textStyle(Subhead_SemiBold())
                             }
-                            .padding(16)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-
-                            ScrollView(.horizontal, showsIndicators: false) {
-                                HStack(alignment: .top, spacing: 0) {
-                                    Image("Image1")
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fill)
-                                        .frame(minWidth: 361, maxWidth: 361, minHeight: 0, maxHeight: .infinity)
+                            .frame(width: 345, alignment: .topLeading)
+                            .padding(.bottom, 12)
+                            
+                            VStack(alignment: .leading, spacing: 0) {
+                                HStack(spacing: 8) {
+                                    Image(systemName: "camera.macro.circle.fill")
+                                        .font(.system(size: 17, weight: .regular))
+                                        .imageScale(.small)
+                                        .foregroundStyle(.white)
+                                        .frame(width: 24, height: 24)
                                         .clipped()
-
-                                    Image("Image2")
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fill)
-                                        .frame(minWidth: 361, maxWidth: 361, minHeight: 0, maxHeight: .infinity)
-                                        .clipped()
-
-                                    Image("Image3")
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fill)
-                                        .frame(minWidth: 361, maxWidth: 361, minHeight: 0, maxHeight: .infinity)
-                                        .clipped()
-                                }
-                            }
-                            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
-                            .clipped()
-                        }
-                        .frame(maxWidth: .infinity, alignment: .topLeading)
-                        .frame(height: 284, alignment: .topLeading)
-                        .background(Color(hex: 0xebebeb))
-                        .clipped()
-                        .cornerRadius(16)
-
-                        VStack(alignment: .leading, spacing:12) {
-                            HStack(spacing: 10) {
-                                Image(systemName: "flag.circle.fill")
-                                    .font(.system(size: 30, weight: .regular))
-                                    .imageScale(.small)
-                                    .foregroundStyle(.white)
-                                    .frame(width: 24, height: 24)
-                                    .clipped()
-                                    .background(Color(hex: 0x5856d6))
-                                    .cornerRadius(64)
-                                Text("Guide")
-                                    .textStyle(Callout())
-                            }
-                            .frame(width: 321, alignment: .topLeading)
-                            .saveSize(in: $geo2)
-                            HStack(spacing:8) {
-                                Image(systemName: "1.circle.fill")
-                                  .font(.system(size: 30, weight: .regular))
-                                  .imageScale(.small)
-                                  .foregroundStyle(.white)
-                                  .frame(width: 32, height: 32)
-                                  .clipped()
-                                  .background(Color(hex: 0x34c759)).cornerRadius(64)
-                                VStack(alignment: .leading, spacing:0) {
-                                    Text("Look for Flowers")
-                                      .textStyle(Callout_1())
-                                    Text("Walk around campus to find flowers")
-                                      .textStyle(Footnote())
-                                }
-                                .frame(width: 240, alignment: .topLeading)
-                            }
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            HStack(spacing:8) {
-                                Image(systemName: "2.circle.fill")
-                                  .font(.system(size: 30, weight: .regular))
-                                  .imageScale(.small)
-                                  .foregroundStyle(.white)
-                                  .frame(width: 32, height: 32)
-                                  .clipped()
-                                  .background(Color(hex: 0x00c7be)).cornerRadius(64)
-                                VStack(alignment: .leading, spacing:0) {
-                                    Text("Take a Picture")
-                                      .textStyle(Callout_2())
-                                    Text("Take a picture of the flower you found")
-                                      .textStyle(Footnote_1())
-                                }
-                                .frame(width: 240, alignment: .topLeading)
-                            }
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            HStack(spacing:8) {
-                                Image(systemName: "3.circle.fill")
-                                  .font(.system(size: 25, weight: .regular))
-                                  .foregroundStyle(.white)
-                                  .frame(width: 32, height: 32)
-                                  .clipped()
-                                  .background(Color(hex: 0xff3b30)).cornerRadius(64)
-                                VStack(alignment: .leading, spacing:0) {
-                                    Text("Learn about them")
-                                      .textStyle(Callout_3())
-                                    Text("Read the description and function")
-                                      .textStyle(Footnote_2())
-                                }
-                                .frame(width: 240, alignment: .topLeading)
-                            }
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            HStack(spacing:8) {
-                                Image(systemName: "4.circle.fill")
-                                  .font(.system(size: 25, weight: .regular))
-                                  .foregroundStyle(.white)
-                                  .frame(width: 32, height: 32)
-                                  .clipped()
-                                  .background(Color(hex: 0x32ade6)).cornerRadius(64)
-                                VStack(alignment: .leading, spacing:0) {
-                                    Text("Collect")
-                                      .textStyle(Callout_4())
-                                    Text("Collect the flower if you want!")
-                                      .textStyle(Footnote_3())
-                                }
-                                .frame(width: 240, alignment: .topLeading)
-                            }
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                        }
-                        .padding(16)
-                        .frame(maxWidth: .infinity, alignment: .topLeading)
-                        .background(Color(hex: 0xebebeb))
-                        .clipped()
-                        .cornerRadius(16)
-                        VStack(alignment: .leading, spacing:0) {
-                            ScrollView(.horizontal, showsIndicators: false) {
-                                HStack(spacing:8) {
-                                    HStack(spacing:4) {
-                                        Image(systemName: "note")
-                                          .font(.system(size: 17, weight: .regular))
-                                          .imageScale(.small)
-                                          .foregroundStyle(.white)
-                                          .frame(width: 24, height: 24)
-                                          .clipped()
-                                          .saveSize(in: $geo1)
-                                          .overlay(
-                                        alignment: .bottomLeading) {
-                                            ZStack() {}
-                                            .frame(width: 329, height: 1, alignment: .topLeading)
-                                            .background(Color(hex: 0xd1d1d1))
-                                            .opacity(0.4)
-                                        }
-                                        .background(Color(hex: 0xffcc00)).cornerRadius(64)
-                                        Text("Notes")
-                                        .textStyle(Callout_5())
-                                    }
+                                        .background(Color(hex: 0x5856d6))
+                                        .cornerRadius(64)
+                                    Text("Flowers")
+                                        .textStyle(Callout())
+                                    Text("swipe to see more")
+                                        .textStyle(Footnote())
                                 }
                                 .padding(16)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                
+                                ScrollView(.horizontal, showsIndicators: false) {
+                                    HStack(alignment: .top, spacing: 0) {
+                                        Image("Image1")
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fill)
+                                            .frame(minWidth: 361, maxWidth: 361, minHeight: 0, maxHeight: .infinity)
+                                            .clipped()
+                                        
+                                        Image("Image2")
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fill)
+                                            .frame(minWidth: 361, maxWidth: 361, minHeight: 0, maxHeight: .infinity)
+                                            .clipped()
+                                        
+                                        Image("Image3")
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fill)
+                                            .frame(minWidth: 361, maxWidth: 361, minHeight: 0, maxHeight: .infinity)
+                                            .clipped()
+                                    }
+                                }
+                                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
+                                .clipped()
                             }
-                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .frame(maxWidth: .infinity, alignment: .topLeading)
+                            .frame(height: 284, alignment: .topLeading)
+                            .background(Color(hex: 0xebebeb))
                             .clipped()
-//                            TextField_1()
+                            .cornerRadius(16)
+                            
+                            VStack(alignment: .leading, spacing:12) {
+                                HStack(spacing: 10) {
+                                    Image(systemName: "flag.circle.fill")
+                                        .font(.system(size: 30, weight: .regular))
+                                        .imageScale(.small)
+                                        .foregroundStyle(.white)
+                                        .frame(width: 24, height: 24)
+                                        .clipped()
+                                        .background(Color(hex: 0x5856d6))
+                                        .cornerRadius(64)
+                                    Text("Guide")
+                                        .textStyle(Callout())
+                                }
+                                .frame(width: 321, alignment: .topLeading)
+                                .saveSize(in: $geo2)
+                                HStack(spacing:8) {
+                                    Image(systemName: "1.circle.fill")
+                                        .font(.system(size: 30, weight: .regular))
+                                        .imageScale(.small)
+                                        .foregroundStyle(.white)
+                                        .frame(width: 32, height: 32)
+                                        .clipped()
+                                        .background(Color(hex: 0x34c759)).cornerRadius(64)
+                                    VStack(alignment: .leading, spacing:0) {
+                                        Text("Look for Flowers")
+                                            .textStyle(Callout_1())
+                                        Text("Walk around campus to find flowers")
+                                            .textStyle(Footnote())
+                                    }
+                                    .frame(width: 240, alignment: .topLeading)
+                                }
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                HStack(spacing:8) {
+                                    Image(systemName: "2.circle.fill")
+                                        .font(.system(size: 30, weight: .regular))
+                                        .imageScale(.small)
+                                        .foregroundStyle(.white)
+                                        .frame(width: 32, height: 32)
+                                        .clipped()
+                                        .background(Color(hex: 0x00c7be)).cornerRadius(64)
+                                    VStack(alignment: .leading, spacing:0) {
+                                        Text("Take a Picture")
+                                            .textStyle(Callout_2())
+                                        Text("Take a picture of the flower you found")
+                                            .textStyle(Footnote_1())
+                                    }
+                                    .frame(width: 240, alignment: .topLeading)
+                                }
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                HStack(spacing:8) {
+                                    Image(systemName: "3.circle.fill")
+                                        .font(.system(size: 25, weight: .regular))
+                                        .foregroundStyle(.white)
+                                        .frame(width: 32, height: 32)
+                                        .clipped()
+                                        .background(Color(hex: 0xff3b30)).cornerRadius(64)
+                                    VStack(alignment: .leading, spacing:0) {
+                                        Text("Collect")
+                                            .textStyle(Callout_3())
+                                        Text("Plant the flowers in your virtual garden")
+                                            .textStyle(Footnote_2())
+                                    }
+                                    .frame(width: 240, alignment: .topLeading)
+                                }
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                HStack(spacing:8) {
+                                    Image(systemName: "4.circle.fill")
+                                        .font(.system(size: 25, weight: .regular))
+                                        .foregroundStyle(.white)
+                                        .frame(width: 32, height: 32)
+                                        .clipped()
+                                        .background(Color(hex: 0x32ade6)).cornerRadius(64)
+                                    VStack(alignment: .leading, spacing:0) {
+                                        Text("Attract Pollinators")
+                                            .textStyle(Callout_4())
+                                        Text("See what kind of pollinators are attracted")
+                                            .textStyle(Footnote_3())
+                                    }
+                                    .frame(width: 240, alignment: .topLeading)
+                                }
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                            }
+                            .padding(16)
+                            .frame(maxWidth: .infinity, alignment: .topLeading)
+                            .background(Color(hex: 0xebebeb))
+                            .clipped()
+                            .cornerRadius(16)
+                            
+                            Button(action: {
+                                navigateToMPV = true
+                            }) {
+                                Text("Ready!")
+                                    .font(.headline)
+                                    .padding()
+                                    .background(Color.green)
+                                    .foregroundColor(.white)
+                                    .cornerRadius(10)
+                            }
+                            .navigationDestination(isPresented: $navigateToMPV) {
+                                MPV()
+                            }
+                            .padding(.bottom)
+                            
+                            Spacer(minLength: 100)
+                        
                         }
-                        .padding(.bottom, 8)
-                        .frame(maxWidth: .infinity, alignment: .topLeading)
-                        .background(Color(hex: 0xebebeb))
+                        .padding([.horizontal, .top], 16)
+                        .padding(.bottom, 50)
+                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .top)
+                        .background(.white)
+                        .opacity(0.9)
                         .clipped()
-                        .cornerRadius(16)
-
-                    }
-                    .padding([.horizontal, .top], 16)
-                    .padding(.bottom, 48)
-                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .top)
-                    .background(.white)
-                    .opacity(0.9)
-                    .clipped()
-                    .cornerRadius(32, corners: [.topRight, .topLeft])
+                        .cornerRadius(32, corners: [.topRight, .topLeft])
                         .offset(y: 50)
                     }
                 }
@@ -219,12 +205,8 @@ struct ContentView: View {
             }
             .frame(maxWidth: UIScreen.main.bounds.width, alignment: .topLeading)
             .ignoresSafeArea()
-//            .background(
-//            MapView( mapType: .standard, animated: false, altitude: 100000, pins: [], showsUserLocation: true)
-//            .edgesIgnoringSafeArea(.all)
-//            .frame(maxWidth: .infinity, maxHeight: .infinity)
-//            , alignment: .center)
         }
+    }
 
     // MARK: additional structs
     struct Large_Title: ViewModifier {

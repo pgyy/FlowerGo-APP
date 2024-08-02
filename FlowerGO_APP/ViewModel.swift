@@ -1,9 +1,3 @@
-//
-//  CollectionClass.swift
-//  FlowerGO_APP
-//
-//  Created by Peigen Yuan on 7/31/24.
-//
 import SwiftUI
 import Combine
 
@@ -33,6 +27,7 @@ class ResultViewModel: ObservableObject {
         }
     }
     @Published var pollinators: [Pollinator] = []
+    @Published var hasPlantedRose: Bool = false
     
     init() {
         loadCollection()
@@ -40,7 +35,7 @@ class ResultViewModel: ObservableObject {
     }
     
     func addToCollection(result: String) {
-        let flower = Flower(id: UUID(), name: result, imageName: "sunflower")
+        let flower = Flower(id: UUID(), name: result, imageName: "rose")
         if !collection.contains(where: { $0.name == flower.name }) {
             collection.append(flower)
         }
@@ -48,20 +43,39 @@ class ResultViewModel: ObservableObject {
     
     func plantFlower(flower: Flower) {
         if !garden.contains(where: { $0.id == flower.id }) {
+            objectWillChange.send() // Trigger the view update
             garden.append(flower)
-            attractPollinator()
+            hasPlantedRose = true
+            print("planting flower")
         }
     }
     
     func removeFromCollection(flower: Flower) {
         if let index = collection.firstIndex(of: flower) {
             collection.remove(at: index)
+            garden.remove(at: index)
         }
     }
     
-    private func attractPollinator() {
-        let pollinator = Pollinator(id: UUID(), name: "Butterfly", imageName: "butterfly", position: CGPoint(x: .random(in: 50...300), y: .random(in: 50...500)))
+    func attractPollinator() {
+        let pollinator = Pollinator(id: UUID(), name: "Butterfly", imageName: "butterfly", position: randomPosition())
         pollinators.append(pollinator)
+        animatePollinator(pollinator)
+    }
+    
+    private func randomPosition() -> CGPoint {
+        CGPoint(x: CGFloat.random(in: 50...(UIScreen.main.bounds.width * 4 - 50)),
+                y: CGFloat.random(in: 100...(UIScreen.main.bounds.height * 2 - 100)))
+    }
+    
+    private func animatePollinator(_ pollinator: Pollinator) {
+        guard let index = pollinators.firstIndex(where: { $0.id == pollinator.id }) else { return }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            withAnimation(Animation.linear(duration: 2).repeatForever(autoreverses: true)) {
+                self.pollinators[index].position = self.randomPosition()
+            }
+        }
     }
     
     private func saveCollection() {
