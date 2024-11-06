@@ -39,10 +39,10 @@ struct CollectionView: View {
                                             
                                             CardView(
                                                 imageName: "house.fill",
-                                                title: "Jane's Home in [City]",
-                                                guests: "2+ guests",
-                                                beds: "3 beds",
-                                                baths: "1.5 baths"
+                                                title: "Flower Name",
+                                                guests: "Description",
+                                                beds: "Functionality",
+                                                baths: "Where it was collected"
                                             )
                                             .scaleEffect(scale)
                                             .opacity(scale - 0.2)
@@ -113,10 +113,10 @@ struct CardView: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.bottom, 3)
                     
-                    Label("", systemImage: "heart")
-                        .font(Font.custom("Alata", size: 20))
-                        .foregroundColor(Color(red: 0, green: 0.25, blue: 0.23))
-                        .frame(width: 20, height: 20, alignment: .trailing)
+//                    Label("", systemImage: "heart")
+//                        .font(Font.custom("Alata", size: 20))
+//                        .foregroundColor(Color(red: 0, green: 0.25, blue: 0.23))
+//                        .frame(width: 20, height: 20, alignment: .trailing)
                 }
                     
                 VStack(alignment: .leading, spacing: 5) {
@@ -124,11 +124,11 @@ struct CardView: View {
                         .font(Font.custom("Alata", size: 12))
                         .foregroundColor(Color(red: 0, green: 0.25, blue: 0.23))
                     
-                    Label(beds, systemImage: "bed.double.fill")
+                    Label(beds, systemImage: "camera.macro")
                         .font(Font.custom("Alata", size: 12))
                         .foregroundColor(Color(red: 0, green: 0.25, blue: 0.23))
                     
-                    Label(baths, systemImage: "bathtub.fill")
+                    Label(baths, systemImage: "map")
                         .font(Font.custom("Alata", size: 12))
                         .foregroundColor(Color(red: 0, green: 0.25, blue: 0.23))
                 }
