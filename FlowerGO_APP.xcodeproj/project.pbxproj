@@ -24,9 +24,7 @@
 		79C847D52C4C63F900069763 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C847D42C4C63F900069763 /* LocationManager.swift */; };
 		79C847DE2C4F393C00069763 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C847DD2C4F393C00069763 /* HomeView.swift */; };
 		79C847E02C505A4600069763 /* MPV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C847DF2C505A4600069763 /* MPV.swift */; };
-		79C847E42C531DE600069763 /* Resnet50.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 79C847E32C531DE600069763 /* Resnet50.mlmodel */; };
 		79C847E62C53283200069763 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C847E52C53283200069763 /* ViewController.swift */; };
-		79C847EA2C5330CF00069763 /* FlowerClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 79C847E92C5330CE00069763 /* FlowerClassifier.mlmodel */; };
 		79C847EC2C5336B800069763 /* FC_new.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 79C847EB2C5336B800069763 /* FC_new.mlmodel */; };
 		79C847EE2C53411B00069763 /* TabBarAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C847ED2C53411B00069763 /* TabBarAppearance.swift */; };
 		79DACA362C570C7D00C46C66 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DACA352C570C7D00C46C66 /* ResultViewController.swift */; };
@@ -73,9 +71,7 @@
 		79C847D62C4C685D00069763 /* FlowerGO-APP-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "FlowerGO-APP-Info.plist"; sourceTree = SOURCE_ROOT; };
 		79C847DD2C4F393C00069763 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		79C847DF2C505A4600069763 /* MPV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPV.swift; sourceTree = "<group>"; };
-		79C847E32C531DE600069763 /* Resnet50.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Resnet50.mlmodel; sourceTree = "<group>"; };
 		79C847E52C53283200069763 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		79C847E92C5330CE00069763 /* FlowerClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = FlowerClassifier.mlmodel; sourceTree = "<group>"; };
 		79C847EB2C5336B800069763 /* FC_new.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = FC_new.mlmodel; sourceTree = "<group>"; };
 		79C847ED2C53411B00069763 /* TabBarAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarAppearance.swift; sourceTree = "<group>"; };
 		79DACA352C570C7D00C46C66 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
@@ -154,8 +150,6 @@
 				7910E45B2C5A892D000B55C1 /* ViewModel.swift */,
 				79C847D42C4C63F900069763 /* LocationManager.swift */,
 				79C847EB2C5336B800069763 /* FC_new.mlmodel */,
-				79C847E32C531DE600069763 /* Resnet50.mlmodel */,
-				79C847E92C5330CE00069763 /* FlowerClassifier.mlmodel */,
 				79738A4A2C3D798C0063959A /* Assets.xcassets */,
 				79738A4F2C3D798C0063959A /* Persistence.swift */,
 				79738A512C3D798C0063959A /* FlowerGO_APP.xcdatamodeld */,
@@ -337,13 +331,11 @@
 				79DAD6462C5BF88000188025 /* ZoomableViewBG.swift in Sources */,
 				79DACA382C570EED00C46C66 /* ResultCardView.swift in Sources */,
 				79C847DE2C4F393C00069763 /* HomeView.swift in Sources */,
-				79C847EA2C5330CF00069763 /* FlowerClassifier.mlmodel in Sources */,
 				79738A492C3D798B0063959A /* PreView.swift in Sources */,
 				79C847D52C4C63F900069763 /* LocationManager.swift in Sources */,
 				79738A532C3D798C0063959A /* FlowerGO_APP.xcdatamodeld in Sources */,
 				7939188B2C3EC26F00454DCE /* GardenView.swift in Sources */,
 				7910E45C2C5A892D000B55C1 /* ViewModel.swift in Sources */,
-				79C847E42C531DE600069763 /* Resnet50.mlmodel in Sources */,
 				79738A472C3D798B0063959A /* FlowerGO_APPApp.swift in Sources */,
 				79DACA362C570C7D00C46C66 /* ResultViewController.swift in Sources */,
 				793918892C3EC20D00454DCE /* CamView.swift in Sources */,
