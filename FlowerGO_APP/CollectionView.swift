@@ -19,11 +19,13 @@ struct CollectionView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
+            Text("Collected Flowers:")
+                .font(.custom("ChalkboardSE-Bold", size: 24))
+                .foregroundColor(Color(hex: 0x1bc081))
+//                .fixedSize(horizontal: false, vertical: true)
+                .padding()
             VStack(alignment: .leading, spacing: 12) {
-                Text("Collected Flowers:")
-                    .font(.custom("ChalkboardSE-Bold", size: 24))
-                    .foregroundColor(Color(hex: 0x1bc081))
-                    .fixedSize(horizontal: false, vertical: true)
+
 
                 // Expandable description text
                 VStack(alignment: .leading, spacing: 8) {
