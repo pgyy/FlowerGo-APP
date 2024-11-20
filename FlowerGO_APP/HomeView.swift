@@ -100,23 +100,29 @@ struct ContentView: View {
             Image(systemName: icon)
                 .font(.system(size: 30))
                 .foregroundColor(.white)
-                .frame(width: 40, height: 40)
+                .frame(width: 50, height: 50) // Ensures consistent icon size
                 .background(Color(hex: color))
-                .cornerRadius(20)
+                .cornerRadius(25) // Makes the icon circular
             
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 4) {
                 Text(text)
                     .font(.custom("ChalkboardSE-Bold", size: 18))
+                    .fixedSize(horizontal: false, vertical: true) // Allows multiline if needed
+                
                 Text(description)
                     .font(.custom("ChalkboardSE-Regular", size: 14))
                     .foregroundColor(.gray)
+                    .fixedSize(horizontal: false, vertical: true) // Allows multiline if needed
             }
+            Spacer() // Pushes content to the left and ensures equal widths
         }
         .padding()
+        .frame(maxWidth: .infinity, alignment: .leading) // Ensures uniform width
         .background(Color.white.opacity(0.8))
         .cornerRadius(16)
         .shadow(radius: 5)
     }
+
 }
 extension Color {
     init(hex: Int, alpha: Double = 1.0) {

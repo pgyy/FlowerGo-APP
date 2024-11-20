@@ -7,65 +7,66 @@
 
 import SwiftUI
 import Combine
-
 struct ResultCardView: View {
     var result: String
     @ObservedObject var viewModel: ResultViewModel
     var index: Int
-    
+
     var isExpanded: Bool {
         viewModel.expandedIndex == index
     }
-    
+
+    var flower: Flower? {
+        viewModel.getFlowerDetails(for: result)
+    }
+
     var body: some View {
         DisclosureGroup(
             isExpanded: .constant(isExpanded),
             content: {
-                VStack {
-                    Text("Additional details about \(result)")
-//                        .padding()
-                    Button(action: {
-                        viewModel.addToCollection(result: result)
-                    }) {
-                        Text("Collect!")
-                            .font(.system(size: 15))
-                            .foregroundColor(.white)
+                if let flower = flower {
+                    VStack(alignment: .leading) {
+                        Text(flower.description)
+                            .font(.subheadline)
                             .padding()
-                            .background(Color.green)
+
+                        Image(flower.imageName)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(maxHeight: 150)
                             .cornerRadius(10)
+
+                        Button(action: {
+                            viewModel.addToCollection(flower: flower)
+                        }) {
+                            Text("Collect!")
+                                .font(.headline)
+                                .foregroundColor(.white)
+                                .padding()
+                                .background(Color.green)
+                                .cornerRadius(10)
+                        }
+                        .padding()
                     }
-//                    .frame(maxWidth: .infinity)
-                    .padding()
+                } else {
+                    Text("Details not available for this flower.")
+                        .font(.subheadline)
+                        .padding()
                 }
-                .padding() // Add padding to content
-                .frame(maxWidth: .infinity)
             },
             label: {
                 Text(result)
-                    .font(.system(size: 17))
+                    .font(.headline)
                     .foregroundColor(.white)
-                    .fixedSize(horizontal: false, vertical: true)
                     .padding()
-                    .frame(maxWidth: .infinity, alignment: .center)
-                    .background(Color(hex: 0x7fd2ff))
-                    .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 24, style: .continuous)
-                            .stroke(Color.black.opacity(0.1), lineWidth: 1)
-                    )
-//                    .padding(.horizontal)
-                    .onTapGesture {
-                        withAnimation {
-                            viewModel.expandedIndex = isExpanded ? nil : index
-                        }
-                    }
+                    .background(Color.blue)
+                    .cornerRadius(10)
             }
         )
-        .padding(.vertical, 20) // Increase vertical padding to avoid overlap
-        .frame(maxWidth: .infinity)
-        .navigationBarHidden(true)
+        .padding(.vertical, 10)
     }
 }
+
 
 struct ResultCardView_Previews: PreviewProvider {
     static var previews: some View {
