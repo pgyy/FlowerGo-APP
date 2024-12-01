@@ -24,30 +24,6 @@ struct ContentView: View {
                         .foregroundColor(Color(hex: 0x2E8B57))
                         .padding()
                     
-//                    VStack(spacing: 8) {
-//                        Text(isTextExpanded ?
-//                             "You are on a mission to discover flowers on the campus of Tufts University. Get into position, and look around for the flowers below!" :
-//                             "You are on a mission to discover flowers on the campus of Tufts University. Get into position, and look around...")
-//                            .font(.custom("ChalkboardSE-Regular", size: 18))
-//                            .foregroundColor(.black)
-//                            .multilineTextAlignment(.center)
-//                            .padding()
-//                            .background(Color.white.opacity(0.8))
-//                            .cornerRadius(16)
-//                            .lineLimit(isTextExpanded ? nil : 2) // Expand to full text if clicked
-//                            .animation(.easeInOut(duration: 0.3), value: isTextExpanded)
-//
-//                        // Button to expand or collapse text
-//                        Button(action: {
-//                            isTextExpanded.toggle()
-//                        }) {
-//                            Text(isTextExpanded ? "Show Less" : "Show More")
-//                                .font(.custom("ChalkboardSE-Regular", size: 16))
-//                                .foregroundColor(.blue)
-//                                .padding(.vertical, 4)
-//                        }
-//                    }
-                    
                     // Horizontal Scroll View for Images
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 16) {
