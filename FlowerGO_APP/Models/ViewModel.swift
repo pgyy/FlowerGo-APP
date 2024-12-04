@@ -1,25 +1,6 @@
 import SwiftUI
 import Combine
 
-struct Flower: Identifiable, Codable, Hashable {
-    let id: UUID
-    let name: String
-    let imageName: String
-    let description: String
-}
-
-
-struct Pollinator: Identifiable {
-    let id: UUID
-    let name: String
-    let imageName: String
-    var position: CGPoint
-}
-
-
-
-
-
 class ResultViewModel: ObservableObject {
     @Published var expandedIndex: Int? = nil
     @Published var collection: [Flower] = [] {
