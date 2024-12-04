@@ -14,7 +14,6 @@ struct Flower: Identifiable, Codable, Hashable {
     let description: String
 }
 
-
 struct Pollinator: Identifiable {
     let id: UUID
     let name: String
