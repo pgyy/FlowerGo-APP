@@ -3,6 +3,7 @@ import CoreML
 import Vision
 
 class ViewController: UIViewController {
+    private let viewModel = ResultViewModel()
 
     // Machine learning model
     private var model: VNCoreMLModel? = nil
@@ -109,10 +110,15 @@ class ViewController: UIViewController {
         resultVC.resultString = self.resultString
         navigationController?.pushViewController(resultVC, animated: true)
     }
+    
+    
+
 }
 
 extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+
+
     // Load captured photo
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
@@ -136,37 +142,34 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
         imagePicker.dismiss(animated: true)
     }
     
-    // Detect flower with machine learning model
     private func detectFlower(image: CIImage) {
-        
         let request = VNCoreMLRequest(model: Model) { [weak self] (request, error) in
-            
             guard let classificationResults = request.results as? [VNClassificationObservation] else { return }
-            
-            // Sort prediction results by its confidence
-            let sortedResults = classificationResults.sorted { $0.confidence > $1.confidence}
-            
-            var resultString = ""
-            
-            // Get top 3 prediction results with highest confidence
-            for i in 0...2 {
-                resultString += "\(sortedResults[i].identifier.capitalized), confidence: \(sortedResults[i].confidence)\n"
+
+            // Get the most confident result
+            if let topResult = classificationResults.first {
+                let flowerName = topResult.identifier.capitalized
+                
+                // Lookup flower details using the view model
+                if let flower = self?.viewModel.getFlowerDetails(for: flowerName) {
+                    // Add the flower to the collection
+                    self?.viewModel.addToCollection(flower: flower)
+                } else {
+                    print("Flower not found in dictionary: \(flowerName)")
+                }
+                
+                DispatchQueue.main.async {
+                    self?.navigateToResultViewController()
+                }
             }
-            
-            // Save the result string
-            self?.resultString = resultString
-            
-            // Navigate to ResultViewController
-            self?.navigateToResultViewController()
         }
         
         let handler = VNImageRequestHandler(ciImage: image)
-        
-        // Perform prediction
         do {
             try handler.perform([request])
         } catch {
             print(error)
         }
     }
+
 }
