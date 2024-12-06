@@ -164,11 +164,19 @@ struct ResultCardView: View {
                         .font(.subheadline)
                         .foregroundColor(.gray)
 
-                    Image(flower.imageName)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(maxHeight: 150)
-                        .cornerRadius(10)
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(spacing: 16) {
+                            ForEach(flower.imageName, id: \.self) { imageName in
+                                Image(imageName)
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 150, height: 150) // Adjust width and height as needed
+                                    .cornerRadius(10)
+                                    .clipped()
+                            }
+                        }
+                        .padding(.vertical, 8) // Optional padding for spacing around the images
+                    }
                 }
             } else {
                 // Fallback if Flower Not Found

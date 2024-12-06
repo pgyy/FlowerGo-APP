@@ -36,11 +36,20 @@ struct CardView: View {
 
     var body: some View {
         VStack {
-            Image(flower.imageName)
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .frame(width: 200, height: 150)
-                .cornerRadius(12)
+            // Display Multiple Images
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 16) {
+                    ForEach(flower.imageName, id: \.self) { imageName in
+                        Image(imageName)
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 150, height: 150) // Adjust width and height as needed
+                            .cornerRadius(10)
+                            .clipped()
+                    }
+                }
+                .padding(.vertical, 8) // Optional padding for spacing around the images
+            }
 
             Text(flower.name)
                 .font(.headline)

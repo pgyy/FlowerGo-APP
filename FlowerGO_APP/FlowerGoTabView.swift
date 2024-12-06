@@ -31,7 +31,7 @@ struct FlowerGoTabView: View {
                     Text("Collection")
                 }
             NavigationView {
-                GardenView(viewModel: viewModel)
+//                GardenView(viewModel: viewModel)
             }
                 .tabItem {
                     Image(systemName: "apple.meditate")
