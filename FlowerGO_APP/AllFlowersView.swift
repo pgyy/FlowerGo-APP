@@ -14,14 +14,21 @@ struct AllFlowersView: View {
 
     var body: some View {
         ZStack {
+            // Light Green Background
+            Color(hex: 0xDFFFD6)
+                .ignoresSafeArea()
+
             // Main Grid of Flowers
             ScrollView {
                 VStack(alignment: .leading, spacing: 16) {
-                    Text("All Flowers")
-                        .font(.headline)
-                        .foregroundColor(Color(hex: 0x1BC081))
-                        .padding(.horizontal)
-
+                    HStack{
+                        Spacer()
+                        Text("Some Flowers to Collect :)")
+                            .font(.custom("ChalkboardSE-Bold", size: 26))
+                            .foregroundColor(Color(hex: 0x2E8B57))
+                            .padding()
+                        Spacer()
+                    }
                     LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 16) {
                         ForEach(flowers) { flower in
                             Button(action: {
@@ -36,8 +43,7 @@ struct AllFlowersView: View {
                                         .clipped()
 
                                     Text(flower.name)
-                                        .font(.subheadline)
-                                        .bold()
+                                        .font(.custom("ChalkboardSE-Bold", size: 14))
                                         .foregroundColor(Color(hex: 0x2E8B57))
                                         .multilineTextAlignment(.center)
                                 }
@@ -61,6 +67,7 @@ struct AllFlowersView: View {
     }
 }
 
+
 struct FlowerDetailView: View {
     var flower: Flower
     @Binding var isPresented: Flower?
@@ -76,15 +83,63 @@ struct FlowerDetailView: View {
 
             // Flower Detail Card
             VStack(alignment: .leading, spacing: 16) {
-                Text(flower.name)
-                    .font(.largeTitle)
-                    .bold()
-                    .foregroundColor(Color(hex: 0x2E8B57))
+                // Flower Name
+                HStack {
+                    Spacer() // Push content to the center
+                    Text(flower.name)
+                        .font(.custom("ChalkboardSE-Bold", size: 30))
+                        .foregroundColor(Color(hex: 0x2E8B57))
+                        .padding()
+                    Spacer() // Push content to the center
+                }
 
+                // Flower Description
                 Text(flower.description)
-                    .font(.body)
+                    .font(.custom("ChalkboardSE", size: 18))
                     .foregroundColor(.gray)
+                    .padding()
 
+                // Ecosystem Role
+                VStack(alignment: .leading, spacing: 8) {
+                    HStack {
+                        Spacer()
+                        Text("Ecosystem Role:")
+                            .font(.custom("ChalkboardSE-Bold", size: 24))
+                            .foregroundColor(Color(hex: 0x2E8B57))
+                            .padding(.horizontal)
+                        Spacer()
+                    }
+                    Text(flower.ecosystemRole)
+                        .font(.custom("ChalkboardSE", size: 18))
+                        .foregroundColor(.gray)
+                        .padding(.horizontal)
+                }
+
+                // Pollinators
+                VStack(alignment: .leading, spacing: 8) {
+                    HStack {
+                        Spacer()
+                        Text("Pollinators:")
+                            .font(.custom("ChalkboardSE-Bold", size: 24))
+                            .foregroundColor(Color(hex: 0x2E8B57))
+                            .padding(.horizontal)
+                        Spacer()
+                    }
+                    HStack(spacing: 10) {
+                        Spacer()
+                        ForEach(flower.pollinators, id: \.self) { pollinator in
+                            Text(pollinator)
+                                .font(.custom("ChalkboardSE-Bold", size: 15))
+                                .padding(.horizontal, 8)
+                                .padding(.vertical, 4)
+                                .background(Color(hex: 0xFFD700).opacity(0.8))
+                                .cornerRadius(8)
+                        }
+                        Spacer()
+                    }
+                }
+
+                // Images
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 16) {
                         ForEach(flower.imageName, id: \.self) { imageName in
@@ -97,19 +152,28 @@ struct FlowerDetailView: View {
                         }
                     }
                 }
+                .padding(.horizontal)
 
                 Spacer()
 
-                Button(action: {
-                    isPresented = nil // Close popup
-                }) {
-                    Text("Close")
-                        .font(.headline)
-                        .foregroundColor(.white)
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background(Color.red)
-                        .cornerRadius(12)
+                HStack {
+                    Spacer()
+                    // Close Button
+                    Button(action: {
+                        isPresented = nil // Close popup
+                    }) {
+                        Text("Close")
+                            .font(.headline)
+                            .padding()
+                            .frame(width: 200)
+                            .background(LinearGradient(gradient: Gradient(colors: [Color(hex: 0x34C759), Color(hex: 0x32ADE6)]), startPoint: .topLeading, endPoint: .bottomTrailing))
+                            .foregroundColor(.white)
+                            .cornerRadius(16)
+                            .shadow(radius: 5)
+                            .scaleEffect(1.1)
+                    }
+                    
+                    Spacer()
                 }
             }
             .padding()
