@@ -134,12 +134,14 @@
 //    }
 //}
 //
+
 import SwiftUI
 import Combine
 
 struct ResultCardView: View {
     var result: String
     @ObservedObject var viewModel: ResultViewModel
+    @State private var navigateToAllFlower = false
 
     var flower: Flower? {
         viewModel.getFlowerDetails(for: result)
@@ -170,12 +172,12 @@ struct ResultCardView: View {
                                 Image(imageName)
                                     .resizable()
                                     .scaledToFill()
-                                    .frame(width: 150, height: 150) // Adjust width and height as needed
+                                    .frame(width: 150, height: 150)
                                     .cornerRadius(10)
                                     .clipped()
                             }
                         }
-                        .padding(.vertical, 8) // Optional padding for spacing around the images
+                        .padding(.vertical, 8)
                     }
                 }
             } else {
@@ -183,6 +185,32 @@ struct ResultCardView: View {
                 Text("No matching flower found.")
                     .font(.subheadline)
                     .foregroundColor(.gray)
+            }
+
+            Spacer() // Push the button to the bottom
+
+            // Button to navigate to All Flowers View
+            Button(action: {
+                navigateToAllFlower = true
+            }) {
+                Text("Explore Other Flowers")
+                    .font(.headline)
+                    .padding()
+                    .frame(width: 200)
+                    .background(
+                        LinearGradient(
+                            gradient: Gradient(colors: [Color(hex: 0x34C759), Color(hex: 0x32ADE6)]),
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        )
+                    )
+                    .foregroundColor(.white)
+                    .cornerRadius(16)
+                    .shadow(radius: 5)
+                    .scaleEffect(1.1)
+            }
+            .navigationDestination(isPresented: $navigateToAllFlower) {
+                AllFlowersView(viewModel: viewModel)
             }
         }
         .padding(16)
