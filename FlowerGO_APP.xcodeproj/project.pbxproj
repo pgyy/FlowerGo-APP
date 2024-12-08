@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		26F3AFD22D03AF8900EB2B5F /* FC_new.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 26F3AFD12D03AF8900EB2B5F /* FC_new.mlmodel */; };
 		26F3AFDE2D03B91A00EB2B5F /* GardenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F3AFD32D03AFC700EB2B5F /* GardenView.swift */; };
 		7917F14D2D03922F008DF543 /* AllFlowersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7917F14C2D039229008DF543 /* AllFlowersView.swift */; };
 		793918872C3EBB1600454DCE /* FlowerGoTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793918862C3EBB1600454DCE /* FlowerGoTabView.swift */; };
@@ -49,7 +48,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		26F3AFD12D03AF8900EB2B5F /* FC_new.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = FC_new.mlmodel; sourceTree = "<group>"; };
 		26F3AFD32D03AFC700EB2B5F /* GardenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardenView.swift; sourceTree = "<group>"; };
 		7917F14C2D039229008DF543 /* AllFlowersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllFlowersView.swift; sourceTree = "<group>"; };
 		793918862C3EBB1600454DCE /* FlowerGoTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowerGoTabView.swift; sourceTree = "<group>"; };
@@ -155,7 +153,6 @@
 				79738A4F2C3D798C0063959A /* Persistence.swift */,
 				79D6ED3A2CEE27D300B7BED2 /* Assets */,
 				79738A512C3D798C0063959A /* FlowerGO_APP.xcdatamodeld */,
-				26F3AFD12D03AF8900EB2B5F /* FC_new.mlmodel */,
 				79738A4C2C3D798C0063959A /* Preview Content */,
 			);
 			path = FlowerGO_APP;
@@ -331,7 +328,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				79C847E02C505A4600069763 /* MPV.swift in Sources */,
-				26F3AFD22D03AF8900EB2B5F /* FC_new.mlmodel in Sources */,
 				79738A502C3D798C0063959A /* Persistence.swift in Sources */,
 				26F3AFDE2D03B91A00EB2B5F /* GardenView.swift in Sources */,
 				79BBE8AA2C5731B900830F32 /* CollectionView.swift in Sources */,
