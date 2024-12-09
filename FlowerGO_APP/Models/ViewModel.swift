@@ -8,18 +8,33 @@ class ResultViewModel: ObservableObject {
                 saveCollection()
             }
         }
-    @Published var garden: [Flower] = [] {
+    @Published var collectedFlowers: [String] {
         didSet {
-            saveGarden()
+            UserDefaults.standard.set(collectedFlowers, forKey: "CollectedFlowers")
         }
     }
+
+        func addFlower(_ flowerName: String) {
+            if !collectedFlowers.contains(flowerName) {
+                collectedFlowers.append(flowerName)
+            }
+        }
+    
+    init() {
+            self.collectedFlowers = UserDefaults.standard.stringArray(forKey: "CollectedFlowers") ?? []
+        }
+//    @Published var garden: [Flower] = [] {
+//        didSet {
+//            saveGarden()
+//        }
+//    }
     @Published var pollinators: [Pollinator] = []
     @Published var hasPlantedRose: Bool = false
 
-    init() {
-        loadCollection()
-        loadGarden()
-    }
+//    init() {
+//        loadCollection()
+////        loadGarden()
+//    }
 
     func getFlowerDetails(for name: String) -> Flower? {
         return flowerDictionary[name]
@@ -30,43 +45,43 @@ class ResultViewModel: ObservableObject {
                 collection.append(flower)
             }
         }
-
-    func plantFlower(flower: Flower) {
-        if !garden.contains(where: { $0.id == flower.id }) {
-            objectWillChange.send() // Trigger the view update
-            garden.append(flower)
-            hasPlantedRose = true
-            print("planting flower")
-        }
-    }
+//
+//    func plantFlower(flower: Flower) {
+//        if !garden.contains(where: { $0.id == flower.id }) {
+//            objectWillChange.send() // Trigger the view update
+//            garden.append(flower)
+//            hasPlantedRose = true
+//            print("planting flower")
+//        }
+//    }
 
     func removeFromCollection(flower: Flower) {
         if let index = collection.firstIndex(of: flower) {
             collection.remove(at: index)
-            garden.remove(at: index)
+//            garden.remove(at: index)
         }
     }
 
-    func attractPollinator() {
-        let pollinator = Pollinator(id: UUID(), name: "Butterfly", imageName: "butterfly", position: randomPosition())
-        pollinators.append(pollinator)
-        animatePollinator(pollinator)
-    }
-
-    private func randomPosition() -> CGPoint {
-        CGPoint(x: CGFloat.random(in: 50...(UIScreen.main.bounds.width * 4 - 50)),
-                y: CGFloat.random(in: 100...(UIScreen.main.bounds.height * 2 - 100)))
-    }
-
-    private func animatePollinator(_ pollinator: Pollinator) {
-        guard let index = pollinators.firstIndex(where: { $0.id == pollinator.id }) else { return }
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            withAnimation(Animation.linear(duration: 2).repeatForever(autoreverses: true)) {
-                self.pollinators[index].position = self.randomPosition()
-            }
-        }
-    }
+//    func attractPollinator() {
+//        let pollinator = Pollinator(id: UUID(), name: "Butterfly", imageName: "butterfly", position: randomPosition())
+//        pollinators.append(pollinator)
+//        animatePollinator(pollinator)
+//    }
+//
+//    private func randomPosition() -> CGPoint {
+//        CGPoint(x: CGFloat.random(in: 50...(UIScreen.main.bounds.width * 4 - 50)),
+//                y: CGFloat.random(in: 100...(UIScreen.main.bounds.height * 2 - 100)))
+//    }
+//
+//    private func animatePollinator(_ pollinator: Pollinator) {
+//        guard let index = pollinators.firstIndex(where: { $0.id == pollinator.id }) else { return }
+//
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+//            withAnimation(Animation.linear(duration: 2).repeatForever(autoreverses: true)) {
+//                self.pollinators[index].position = self.randomPosition()
+//            }
+//        }
+//    }
 
     private func saveCollection() {
             if let encoded = try? JSONEncoder().encode(collection) {
@@ -80,17 +95,17 @@ class ResultViewModel: ObservableObject {
                 collection = decoded
             }
         }
-
-    private func saveGarden() {
-        if let encoded = try? JSONEncoder().encode(garden) {
-            UserDefaults.standard.set(encoded, forKey: "garden")
-        }
-    }
-
-    private func loadGarden() {
-        if let savedData = UserDefaults.standard.data(forKey: "garden"),
-           let decoded = try? JSONDecoder().decode([Flower].self, from: savedData) {
-            garden = decoded
-        }
-    }
+//
+//    private func saveGarden() {
+//        if let encoded = try? JSONEncoder().encode(garden) {
+//            UserDefaults.standard.set(encoded, forKey: "garden")
+//        }
+//    }
+//
+//    private func loadGarden() {
+//        if let savedData = UserDefaults.standard.data(forKey: "garden"),
+//           let decoded = try? JSONDecoder().decode([Flower].self, from: savedData) {
+//            garden = decoded
+//        }
+//    }
 }
