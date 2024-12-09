@@ -252,7 +252,7 @@ struct ResultCardView: View {
                 .bold()
                 .foregroundColor(Color(hex: 0x2E8B57))
 
-            Spacer()
+//            Spacer()
 
             Button(action: {
                 viewModel.addFlower(result) // Add the classifier result to collected flowers
