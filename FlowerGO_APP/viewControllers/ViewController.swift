@@ -289,12 +289,6 @@ class ViewController: UIViewController {
 //        resultVC.viewModel = self.viewModel // Pass the shared view model
         navigationController?.pushViewController(resultVC, animated: true)
     }
-    
-    //    private func navigateToResultViewController() {
-    //        let resultVC = ResultViewController()
-    //        resultVC.resultString = self.resultString
-    //        navigationController?.pushViewController(resultVC, animated: true)
-    //    }
 }
 
 extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {

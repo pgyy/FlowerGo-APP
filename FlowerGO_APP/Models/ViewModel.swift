@@ -14,11 +14,11 @@ class ResultViewModel: ObservableObject {
         }
     }
 
-        func addFlower(_ flowerName: String) {
-            if !collectedFlowers.contains(flowerName) {
-                collectedFlowers.append(flowerName)
-            }
+    func addFlower(_ flowerName: String) {
+        if !collectedFlowers.contains(flowerName) {
+            collectedFlowers.append(flowerName)
         }
+    }
     
     init() {
             self.collectedFlowers = UserDefaults.standard.stringArray(forKey: "CollectedFlowers") ?? []

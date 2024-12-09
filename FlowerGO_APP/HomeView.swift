@@ -6,6 +6,8 @@ let scenes = UIApplication.shared.connectedScenes
 let windowScene = scenes.first as? UIWindowScene
 let window = windowScene?.windows.first
 let safeAreaTop = window?.safeAreaInsets.top
+
+
 struct ContentView: View {
     @State private var navigateToMPV = false
     @State private var isTextExpanded = false
@@ -17,59 +19,63 @@ struct ContentView: View {
                 Color(hex: 0xDFFFD6)
                     .ignoresSafeArea()
                 
-                VStack(spacing: 20) {
-                    // Title with custom playful font
-                    Text("Discovering Tufts")
-                        .font(.custom("ChalkboardSE-Bold", size: 34))
-                        .foregroundColor(Color(hex: 0x2E8B57))
-                        .padding()
-                    
-                    // Horizontal Scroll View for Images
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(spacing: 16) {
-                            ForEach(1...3, id: \.self) { index in
-                                Image("Image\(index)")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                                    .frame(width: 300, height: 200)
-                                    .cornerRadius(20)
-                                    .shadow(radius: 10)
+                ScrollView { // Make the entire content scrollable
+                    VStack(spacing: 20) {
+                        // Title with custom playful font
+                        Text("Discovering Tufts")
+                            .font(.custom("ChalkboardSE-Bold", size: 34))
+                            .foregroundColor(Color(hex: 0x2E8B57))
+                            .padding(.top, 20)
+                        
+                        // Horizontal Scroll View for Images
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack(spacing: 16) {
+                                ForEach(1...3, id: \.self) { index in
+                                    Image("Image\(index)")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                        .frame(width: 300, height: 200)
+                                        .cornerRadius(20)
+                                        .shadow(radius: 10)
+                                }
                             }
+                            .padding(.horizontal)
                         }
-                        .padding()
+                        
+                        // Step Guide with Icons
+                        VStack(spacing: 16) {
+                            stepView(icon: "1.circle.fill", text: "Look for Flowers", description: "Walk around campus to find flowers", color: 0x34C759)
+                            stepView(icon: "2.circle.fill", text: "Take a Picture", description: "Capture the flower you found", color: 0x00C7BE)
+                            stepView(icon: "3.circle.fill", text: "Collect", description: "Plant the flowers in your virtual garden", color: 0xFF3B30)
+                            stepView(icon: "4.circle.fill", text: "Attract Pollinators", description: "See what kind of pollinators are attracted", color: 0x32ADE6)
+                        }
+                        .padding(.horizontal)
+
+                        // Animated Button
+                        Button(action: {
+                            navigateToMPV = true
+                        }) {
+                            Text("Ready!")
+                                .font(.headline)
+                                .padding()
+                                .frame(width: 200)
+                                .background(LinearGradient(gradient: Gradient(colors: [Color(hex: 0x34C759), Color(hex: 0x32ADE6)]), startPoint: .topLeading, endPoint: .bottomTrailing))
+                                .foregroundColor(.white)
+                                .cornerRadius(16)
+                                .shadow(radius: 5)
+                                .scaleEffect(1.1)
+                        }
+                        .padding(.bottom, 20)
+                        .navigationDestination(isPresented: $navigateToMPV) {
+                            MPV()
+                        }
                     }
-                    
-                    // Step Guide with Icons
-                    VStack(spacing: 16) {
-                        stepView(icon: "1.circle.fill", text: "Look for Flowers", description: "Walk around campus to find flowers", color: 0x34C759)
-                        stepView(icon: "2.circle.fill", text: "Take a Picture", description: "Capture the flower you found", color: 0x00C7BE)
-                        stepView(icon: "3.circle.fill", text: "Collect", description: "Plant the flowers in your virtual garden", color: 0xFF3B30)
-                        stepView(icon: "4.circle.fill", text: "Attract Pollinators", description: "See what kind of pollinators are attracted", color: 0x32ADE6)
-                    }
-                    
-                    // Animated Button
-                    Button(action: {
-                        navigateToMPV = true
-                    }) {
-                        Text("Ready!")
-                            .font(.headline)
-                            .padding()
-                            .frame(width: 200)
-                            .background(LinearGradient(gradient: Gradient(colors: [Color(hex: 0x34C759), Color(hex: 0x32ADE6)]), startPoint: .topLeading, endPoint: .bottomTrailing))
-                            .foregroundColor(.white)
-                            .cornerRadius(16)
-                            .shadow(radius: 5)
-                            .scaleEffect(1.1)
-//                            .animation(.easeInOut(duration: 0.6).repeatForever(autoreverses: true))
-                    }
-                    .navigationDestination(isPresented: $navigateToMPV) {
-                        MPV()
-                    }
+                    .padding(.vertical)
                 }
-                .padding()
             }
         }
     }
+    
     // Helper View for Steps
     func stepView(icon: String, text: String, description: String, color: Int) -> some View {
         HStack(spacing: 12) {
@@ -98,8 +104,12 @@ struct ContentView: View {
         .cornerRadius(16)
         .shadow(radius: 5)
     }
-
 }
+
+
+
+
+
 extension Color {
     init(hex: Int, alpha: Double = 1.0) {
         let red = Double((hex & 0xff0000) >> 16) / 255.0

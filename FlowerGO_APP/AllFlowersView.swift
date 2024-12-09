@@ -13,14 +13,30 @@ struct AllFlowersView: View {
     @State private var zoomedImage: String?
     
     
-    // Combine hardcoded flowers and collected classifier results
     var allFlowers: [Flower] {
         let hardcodedFlowers = Array(flowerDictionary.values)
-        let collectedFlowerObjects = viewModel.collectedFlowers.compactMap { flowerName in
-            flowerDictionary[flowerName] // Match classifier results with hardcoded data
+        
+        // Create flower objects for collected names not in the dictionary
+        let collectedFlowerObjects = viewModel.collectedFlowers.compactMap { flowerName -> Flower? in
+            if let existingFlower = flowerDictionary[flowerName] {
+                return existingFlower // Use the existing flower object if found
+            } else {
+                // Create a new flower object for unknown flowers
+                return Flower(
+                    id: UUID(),
+                    name: flowerName, // Use the name from the collected list
+                    imageName: ["unknown"], // Default image
+                    description: "Details unknown for this flower.",
+                    ecosystemRole: "Ecosystem role unkown for this flower",
+                    pollinators: ["unknown pollinators"]
+                )
+            }
         }
+        
+        // Combine hardcoded flowers and collected flowers
         return hardcodedFlowers + collectedFlowerObjects
     }
+
 
     var body: some View {
         ZStack {
