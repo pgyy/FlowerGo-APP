@@ -1,199 +1,263 @@
+//////
+//////  ResultCardView.swift
+//////  FlowerGO_APP
+//////
+//////  Created by Peigen Yuan on 7/28/24.
+//////
 ////
-////  ResultCardView.swift
-////  FlowerGO_APP
+////import SwiftUI
+////import Combine
 ////
-////  Created by Peigen Yuan on 7/28/24.
+////
+////struct ResultCardView: View {
+////    var result: String
+////    @ObservedObject var viewModel: ResultViewModel
+////    var index: Int
+////
+////    var flower: Flower? {
+////        viewModel.getFlowerDetails(for: result)
+////    }
+////
+////    var body: some View {
+////        DisclosureGroup(
+////            isExpanded: Binding(
+////                get: { viewModel.expandedIndex == index },
+////                set: { isExpanded in
+////                    viewModel.expandedIndex = isExpanded ? index : nil
+////                }
+////            ),
+////            content: {
+////                if let flower = flower {
+////                    VStack(alignment: .leading, spacing: 16) {
+////                        // Flower Name and Description
+////                        VStack(alignment: .leading) {
+////                            Text(flower.name)
+////                                .font(.title)
+////                                .bold()
+////                                .foregroundColor(Color(hex: 0x2E8B57))
+////                                .padding(.bottom, 4)
+////
+////                            Text(flower.description)
+////                                .font(.subheadline)
+////                                .foregroundColor(.gray)
+////                        }
+////                        .padding(.horizontal)
+////
+////                        // Flower Pictures
+////                        ScrollView(.horizontal, showsIndicators: false) {
+////                            HStack(spacing: 16) {
+////                                ForEach(["rosePics1", "rosePics2", "rosePics3"], id: \.self) { imageName in
+////                                    Image(imageName)
+////                                        .resizable()
+////                                        .scaledToFill()
+////                                        .frame(width: 120, height: 120)
+////                                        .clipped()
+////                                        .cornerRadius(10)
+////                                }
+////                            }
+////                            .padding(.horizontal)
+////                        }
+////
+////                        // Flower Functionality
+////                        VStack(alignment: .leading, spacing: 4) {
+////                            Text("Functionality")
+////                                .font(.headline)
+////                                .foregroundColor(Color(hex: 0x1BC081))
+////
+////                            Text("Symbol of love and beauty. Used in perfumes and decorations.")
+////                                .font(.subheadline)
+////                                .foregroundColor(.gray)
+////                        }
+////                        .padding(.horizontal)
+////
+////                        // Potential Pollinators
+////                        VStack(alignment: .leading, spacing: 4) {
+////                            Text("Attracts Pollinators")
+////                                .font(.headline)
+////                                .foregroundColor(Color(hex: 0x1BC081))
+////
+////                            HStack(spacing: 10) {
+////                                ForEach(["Bees", "Butterflies"], id: \.self) { pollinator in
+////                                    Text(pollinator)
+////                                        .font(.subheadline)
+////                                        .padding(.horizontal, 8)
+////                                        .padding(.vertical, 4)
+////                                        .background(Color(hex: 0xFFD700).opacity(0.8))
+////                                        .cornerRadius(8)
+////                                }
+////                            }
+////                        }
+////                        .padding(.horizontal)
+////
+////                        // Collect Button
+//////                        Button(action: {
+//////                            if let flower = flower {
+//////                                viewModel.addToCollection(flower: flower)
+//////                            }
+//////                        }) {
+//////                            Text("Collect!")
+//////                                .font(.headline)
+//////                                .foregroundColor(.white)
+//////                                .padding()
+//////                                .frame(maxWidth: .infinity)
+//////                                .background(Color(hex: 0x34C759))
+//////                                .cornerRadius(12)
+//////                        }
+//////                        .padding(.horizontal)
+////                    }
+////                } else {
+////                    Text("Details not available for this flower.")
+////                        .font(.subheadline)
+////                        .foregroundColor(.gray)
+////                        .padding()
+////                }
+////            },
+////            label: {
+////                Text(result)
+////                    .font(.headline)
+////                    .foregroundColor(.white)
+////                    .padding()
+////                    .frame(maxWidth: .infinity, alignment: .leading)
+////                    .background(Color.blue)
+////                    .cornerRadius(10)
+////            }
+////        )
+////        .padding(.vertical, 10)
+////        .padding(.horizontal, 16)
+////    }
+////}
+////
+////struct ResultCardView_Previews: PreviewProvider {
+////    static var previews: some View {
+////        let viewModel = ResultViewModel()
+////        return ResultCardView(result: "Rose", viewModel: viewModel, index: 1)
+////    }
+////}
 ////
 //
 //import SwiftUI
 //import Combine
 //
-//
 //struct ResultCardView: View {
 //    var result: String
 //    @ObservedObject var viewModel: ResultViewModel
-//    var index: Int
+//    @State private var navigateToAllFlower = false
 //
 //    var flower: Flower? {
 //        viewModel.getFlowerDetails(for: result)
 //    }
 //
 //    var body: some View {
-//        DisclosureGroup(
-//            isExpanded: Binding(
-//                get: { viewModel.expandedIndex == index },
-//                set: { isExpanded in
-//                    viewModel.expandedIndex = isExpanded ? index : nil
-//                }
-//            ),
-//            content: {
-//                if let flower = flower {
-//                    VStack(alignment: .leading, spacing: 16) {
-//                        // Flower Name and Description
-//                        VStack(alignment: .leading) {
-//                            Text(flower.name)
-//                                .font(.title)
-//                                .bold()
-//                                .foregroundColor(Color(hex: 0x2E8B57))
-//                                .padding(.bottom, 4)
+//        VStack(alignment: .leading, spacing: 16) {
+//            // Classifier Result Header
+//            Text("Classifier Result:")
+//                .font(.headline)
+//                .foregroundColor(Color(hex: 0x1BC081))
 //
-//                            Text(flower.description)
-//                                .font(.subheadline)
-//                                .foregroundColor(.gray)
-//                        }
-//                        .padding(.horizontal)
+//            // Display the Resulting Flower Name
+//            if let flower = flower {
+//                VStack(alignment: .leading, spacing: 12) {
+//                    Text(flower.name)
+//                        .font(.title)
+//                        .bold()
+//                        .foregroundColor(Color(hex: 0x2E8B57))
 //
-//                        // Flower Pictures
-//                        ScrollView(.horizontal, showsIndicators: false) {
-//                            HStack(spacing: 16) {
-//                                ForEach(["rosePics1", "rosePics2", "rosePics3"], id: \.self) { imageName in
-//                                    Image(imageName)
-//                                        .resizable()
-//                                        .scaledToFill()
-//                                        .frame(width: 120, height: 120)
-//                                        .clipped()
-//                                        .cornerRadius(10)
-//                                }
-//                            }
-//                            .padding(.horizontal)
-//                        }
-//
-//                        // Flower Functionality
-//                        VStack(alignment: .leading, spacing: 4) {
-//                            Text("Functionality")
-//                                .font(.headline)
-//                                .foregroundColor(Color(hex: 0x1BC081))
-//
-//                            Text("Symbol of love and beauty. Used in perfumes and decorations.")
-//                                .font(.subheadline)
-//                                .foregroundColor(.gray)
-//                        }
-//                        .padding(.horizontal)
-//
-//                        // Potential Pollinators
-//                        VStack(alignment: .leading, spacing: 4) {
-//                            Text("Attracts Pollinators")
-//                                .font(.headline)
-//                                .foregroundColor(Color(hex: 0x1BC081))
-//
-//                            HStack(spacing: 10) {
-//                                ForEach(["Bees", "Butterflies"], id: \.self) { pollinator in
-//                                    Text(pollinator)
-//                                        .font(.subheadline)
-//                                        .padding(.horizontal, 8)
-//                                        .padding(.vertical, 4)
-//                                        .background(Color(hex: 0xFFD700).opacity(0.8))
-//                                        .cornerRadius(8)
-//                                }
-//                            }
-//                        }
-//                        .padding(.horizontal)
-//
-//                        // Collect Button
-////                        Button(action: {
-////                            if let flower = flower {
-////                                viewModel.addToCollection(flower: flower)
-////                            }
-////                        }) {
-////                            Text("Collect!")
-////                                .font(.headline)
-////                                .foregroundColor(.white)
-////                                .padding()
-////                                .frame(maxWidth: .infinity)
-////                                .background(Color(hex: 0x34C759))
-////                                .cornerRadius(12)
-////                        }
-////                        .padding(.horizontal)
-//                    }
-//                } else {
-//                    Text("Details not available for this flower.")
+//                    Text(flower.description)
 //                        .font(.subheadline)
 //                        .foregroundColor(.gray)
-//                        .padding()
+//
+//                    ScrollView(.horizontal, showsIndicators: false) {
+//                        HStack(spacing: 16) {
+//                            ForEach(flower.imageName, id: \.self) { imageName in
+//                                Image(imageName)
+//                                    .resizable()
+//                                    .scaledToFill()
+//                                    .frame(width: 150, height: 150)
+//                                    .cornerRadius(10)
+//                                    .clipped()
+//                            }
+//                        }
+//                        .padding(.vertical, 8)
+//                    }
 //                }
-//            },
-//            label: {
-//                Text(result)
-//                    .font(.headline)
-//                    .foregroundColor(.white)
-//                    .padding()
-//                    .frame(maxWidth: .infinity, alignment: .leading)
-//                    .background(Color.blue)
-//                    .cornerRadius(10)
+//            } else {
+//                // Fallback if Flower Not Found
+//                Text("No matching flower found.")
+//                    .font(.subheadline)
+//                    .foregroundColor(.gray)
 //            }
-//        )
-//        .padding(.vertical, 10)
-//        .padding(.horizontal, 16)
+//
+//            Spacer() // Push the button to the bottom
+//
+//            // Button to navigate to All Flowers View
+//            Button(action: {
+//                navigateToAllFlower = true
+//            }) {
+//                Text("Explore Other Flowers")
+//                    .font(.headline)
+//                    .padding()
+//                    .frame(width: 200)
+//                    .background(
+//                        LinearGradient(
+//                            gradient: Gradient(colors: [Color(hex: 0x34C759), Color(hex: 0x32ADE6)]),
+//                            startPoint: .topLeading,
+//                            endPoint: .bottomTrailing
+//                        )
+//                    )
+//                    .foregroundColor(.white)
+//                    .cornerRadius(16)
+//                    .shadow(radius: 5)
+//                    .scaleEffect(1.1)
+//            }
+//            .navigationDestination(isPresented: $navigateToAllFlower) {
+//                AllFlowersView(viewModel: viewModel)
+//            }
+//        }
+//        .padding(16)
+//        .background(Color.white)
+//        .cornerRadius(12)
+//        .shadow(radius: 5)
+//        .padding(.horizontal)
 //    }
 //}
 //
 //struct ResultCardView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        let viewModel = ResultViewModel()
-//        return ResultCardView(result: "Rose", viewModel: viewModel, index: 1)
+//        return ResultCardView(result: "Rose", viewModel: viewModel)
 //    }
 //}
+
+//
+//  ResultCardView.swift
+//  FlowerGO_APP
+//
+//  Created by Peigen Yuan on 7/28/24.
 //
 
 import SwiftUI
 import Combine
-
 struct ResultCardView: View {
     var result: String
     @ObservedObject var viewModel: ResultViewModel
-    @State private var navigateToAllFlower = false
-
-    var flower: Flower? {
-        viewModel.getFlowerDetails(for: result)
-    }
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
-            // Classifier Result Header
             Text("Classifier Result:")
                 .font(.headline)
                 .foregroundColor(Color(hex: 0x1BC081))
 
-            // Display the Resulting Flower Name
-            if let flower = flower {
-                VStack(alignment: .leading, spacing: 12) {
-                    Text(flower.name)
-                        .font(.title)
-                        .bold()
-                        .foregroundColor(Color(hex: 0x2E8B57))
+            Text(result)
+                .font(.title)
+                .bold()
+                .foregroundColor(Color(hex: 0x2E8B57))
 
-                    Text(flower.description)
-                        .font(.subheadline)
-                        .foregroundColor(.gray)
+            Spacer()
 
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(spacing: 16) {
-                            ForEach(flower.imageName, id: \.self) { imageName in
-                                Image(imageName)
-                                    .resizable()
-                                    .scaledToFill()
-                                    .frame(width: 150, height: 150)
-                                    .cornerRadius(10)
-                                    .clipped()
-                            }
-                        }
-                        .padding(.vertical, 8)
-                    }
-                }
-            } else {
-                // Fallback if Flower Not Found
-                Text("No matching flower found.")
-                    .font(.subheadline)
-                    .foregroundColor(.gray)
-            }
-
-            Spacer() // Push the button to the bottom
-
-            // Button to navigate to All Flowers View
             Button(action: {
-                navigateToAllFlower = true
+                viewModel.addFlower(result) // Add the classifier result to collected flowers
             }) {
-                Text("Explore Other Flowers")
+                Text("Collect Flower")
                     .font(.headline)
                     .padding()
                     .frame(width: 200)
@@ -209,9 +273,6 @@ struct ResultCardView: View {
                     .shadow(radius: 5)
                     .scaleEffect(1.1)
             }
-            .navigationDestination(isPresented: $navigateToAllFlower) {
-                AllFlowersView(viewModel: viewModel)
-            }
         }
         .padding(16)
         .background(Color.white)
@@ -221,9 +282,68 @@ struct ResultCardView: View {
     }
 }
 
+//struct ResultCardView: View {
+//    var result: String
+//    @ObservedObject var viewModel: ResultViewModel
+//    var index: Int
+//    
+//    var isExpanded: Bool {
+//        viewModel.expandedIndex == index
+//    }
+//    
+//    var body: some View {
+//        DisclosureGroup(
+//            isExpanded: .constant(isExpanded),
+//            content: {
+//                VStack {
+//                    Text("Additional details about \(result)")
+////                        .padding()
+//                    Button(action: {
+////                        viewModel.addToCollection(result: result)
+//                    }) {
+//                        Text("Collect!")
+//                            .font(.system(size: 15))
+//                            .foregroundColor(.white)
+//                            .padding()
+//                            .background(Color.green)
+//                            .cornerRadius(10)
+//                    }
+////                    .frame(maxWidth: .infinity)
+//                    .padding()
+//                }
+//                .padding() // Add padding to content
+//                .frame(maxWidth: .infinity)
+//            },
+//            label: {
+//                Text(result)
+//                    .font(.system(size: 17))
+//                    .foregroundColor(.white)
+//                    .fixedSize(horizontal: false, vertical: true)
+//                    .padding()
+//                    .frame(maxWidth: .infinity, alignment: .center)
+//                    .background(Color(hex: 0x7fd2ff))
+//                    .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
+//                    .overlay(
+//                        RoundedRectangle(cornerRadius: 24, style: .continuous)
+//                            .stroke(Color.black.opacity(0.1), lineWidth: 1)
+//                    )
+////                    .padding(.horizontal)
+//                    .onTapGesture {
+//                        withAnimation {
+//                            viewModel.expandedIndex = isExpanded ? nil : index
+//                        }
+//                    }
+//            }
+//        )
+//        .padding(.vertical, 20) // Increase vertical padding to avoid overlap
+//        .frame(maxWidth: .infinity)
+//        .navigationBarHidden(true)
+//    }
+//}
+
 struct ResultCardView_Previews: PreviewProvider {
     static var previews: some View {
         let viewModel = ResultViewModel()
-        return ResultCardView(result: "Rose", viewModel: viewModel)
+        return ResultCardView(result: "Test Flower", viewModel: viewModel)
     }
 }

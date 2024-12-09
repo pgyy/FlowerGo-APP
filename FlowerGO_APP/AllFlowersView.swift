@@ -5,12 +5,82 @@
 //  Created by Peigen Yuan on 12/6/24.
 //
 import SwiftUI
+//
+//struct AllFlowersView: View {
+//    @ObservedObject var viewModel: ResultViewModel
+//    @State private var selectedFlower: Flower? // Tracks the currently selected flower for the popup
+//
+//    let flowers: [Flower] = Array(flowerDictionary.values) // Retrieve all flowers from the dictionary
+//
+//    var body: some View {
+//        ZStack {
+//            // Light Green Background
+//            Color(hex: 0xDFFFD6)
+//                .ignoresSafeArea()
+//
+//            // Main Grid of Flowers
+//            ScrollView {
+//                VStack(alignment: .leading, spacing: 16) {
+//                    HStack{
+//                        Spacer()
+//                        Text("Some Flowers to Collect :)")
+//                            .font(.custom("ChalkboardSE-Bold", size: 26))
+//                            .foregroundColor(Color(hex: 0x2E8B57))
+//                            .padding()
+//                        Spacer()
+//                    }
+//                    LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 16) {
+//                        ForEach(flowers) { flower in
+//                            Button(action: {
+//                                selectedFlower = flower // Set the selected flower to show its details
+//                            }) {
+//                                VStack {
+//                                    Image(flower.imageName.first ?? "") // Display the first image
+//                                        .resizable()
+//                                        .scaledToFill()
+//                                        .frame(width: 100, height: 100)
+//                                        .cornerRadius(10)
+//                                        .clipped()
+//
+//                                    Text(flower.name)
+//                                        .font(.custom("ChalkboardSE-Bold", size: 14))
+//                                        .foregroundColor(Color(hex: 0x2E8B57))
+//                                        .multilineTextAlignment(.center)
+//                                }
+//                                .frame(width: 120, height: 150)
+//                                .background(Color.white)
+//                                .cornerRadius(12)
+//                                .shadow(radius: 5)
+//                            }
+//                        }
+//                    }
+//                    .padding(.horizontal)
+//                }
+//                .padding(.top, 16)
+//            }
+//
+//            // Popup/Zoom-In View for Selected Flower
+//            if let flower = selectedFlower {
+//                FlowerDetailView(flower: flower, isPresented: $selectedFlower)
+//            }
+//        }
+//    }
+//}
+
+import SwiftUI
 
 struct AllFlowersView: View {
     @ObservedObject var viewModel: ResultViewModel
     @State private var selectedFlower: Flower? // Tracks the currently selected flower for the popup
 
-    let flowers: [Flower] = Array(flowerDictionary.values) // Retrieve all flowers from the dictionary
+    // Combine hardcoded flowers and collected classifier results
+    var allFlowers: [Flower] {
+        let hardcodedFlowers = Array(flowerDictionary.values)
+        let collectedFlowerObjects = viewModel.collectedFlowers.compactMap { flowerName in
+            flowerDictionary[flowerName] // Match classifier results with hardcoded data
+        }
+        return hardcodedFlowers + collectedFlowerObjects
+    }
 
     var body: some View {
         ZStack {
@@ -21,16 +91,17 @@ struct AllFlowersView: View {
             // Main Grid of Flowers
             ScrollView {
                 VStack(alignment: .leading, spacing: 16) {
-                    HStack{
+                    HStack {
                         Spacer()
-                        Text("Some Flowers to Collect :)")
+                        Text("Flower Collection :)")
                             .font(.custom("ChalkboardSE-Bold", size: 26))
                             .foregroundColor(Color(hex: 0x2E8B57))
                             .padding()
                         Spacer()
                     }
+
                     LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 16) {
-                        ForEach(flowers) { flower in
+                        ForEach(allFlowers) { flower in
                             Button(action: {
                                 selectedFlower = flower // Set the selected flower to show its details
                             }) {
