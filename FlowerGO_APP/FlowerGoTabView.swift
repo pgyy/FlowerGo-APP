@@ -24,14 +24,14 @@ struct FlowerGoTabView: View {
                     Text("Map")
                 }
             NavigationView {
-                CollectionView(viewModel: viewModel)
+                AllFlowersView(viewModel: viewModel)
             }
                 .tabItem {
                     Image(systemName: "camera.macro")
                     Text("Collection")
                 }
             NavigationView {
-//                GardenView(viewModel: viewModel)
+                GardenView()
             }
                 .tabItem {
                     Image(systemName: "apple.meditate")
