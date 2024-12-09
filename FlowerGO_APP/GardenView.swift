@@ -10,11 +10,14 @@ struct GardenView: View {
     
     @State private var isPopupVisible = false
     @State private var isPollinatorPopupVisible = false // State for pollinator popup
+    @State private var isPollinatorImagePopupVisible = false // State for pollinator image popup
     @State private var selectedPot = (row: 0, column: 0) // Track the clicked button's position
     @State private var selectedAsset: String? = nil // Track which asset is selected
+    @State private var pollinatorForPot: String? = nil // Track the pollinator for the selected pot
     
     // List of asset names
     let assets = ["Rose", "Lily", "Orchid", "Sunflower", "Tulip"]
+    let pollinators = ["Bee", "Butterfly", "Bat", "Beetle", "Slug"]
     
     // State to track the planted plants in each pot
     @State private var plantedPlants = Array(repeating: Array(repeating: nil as String?, count: 2), count: 3) // 3x2 grid
@@ -74,7 +77,6 @@ struct GardenView: View {
                 .padding(.top, height * 0.04)
             }
 
-
             // Planting Popup Overlay
             if isPopupVisible {
                 ZStack {
@@ -91,23 +93,22 @@ struct GardenView: View {
                                 ForEach(assets, id: \.self) { asset in
                                     Button(action: {
                                         selectedAsset = asset // Set the selected asset
-                                        print("Selected Plant: \(asset)")
                                     }) {
                                         Image(asset)
                                             .resizable()
                                             .scaledToFit()
-                                            .frame(width: 50, height: 50) // Adjust size as needed
+                                            .frame(width: 50, height: 50)
                                             .padding()
                                             .background(
                                                 RoundedRectangle(cornerRadius: 8)
-                                                    .stroke(selectedAsset == asset ? Color.white : Color.clear, lineWidth: 2)
+                                                    .stroke(selectedAsset == asset ? Color.blue : Color.clear, lineWidth: 2)
                                             )
                                     }
                                 }
                             }
                             .padding()
                         }
-                        .frame(height: 80) // Control the height of the scrollable area
+                        .frame(height: 80)
 
                         Text(selectedAsset != nil ? "Selected: \(selectedAsset!)" : "No Asset Selected")
                             .foregroundColor(.white)
@@ -116,7 +117,7 @@ struct GardenView: View {
                         // Horizontal Buttons for Cancel and Plant
                         HStack {
                             Button(action: {
-                                isPopupVisible = false // Dismiss popup
+                                isPopupVisible = false
                             }) {
                                 Text("Cancel")
                                     .padding()
@@ -131,31 +132,31 @@ struct GardenView: View {
                                 if let asset = selectedAsset {
                                     plantedPlants[selectedPot.row][selectedPot.column] = asset
                                 }
-                                isPopupVisible = false // Dismiss popup
+                                isPopupVisible = false
                             }) {
                                 Text("Plant")
                                     .padding()
                                     .frame(maxWidth: .infinity)
-                                    .background(selectedAsset != nil ? Color.white : Color.green)
-                                    .foregroundColor(.black)
+                                    .background(selectedAsset != nil ? Color.green : Color.gray)
+                                    .foregroundColor(.white)
                                     .cornerRadius(8)
                             }
-                            .disabled(selectedAsset == nil) // Disable if no asset is selected
+                            .disabled(selectedAsset == nil)
                         }
                     }
                     .padding()
-                    .frame(width: 300) // Control the width of the popup
-                    .background(Color.green)
+                    .frame(width: 300)
+                    .background(Color.gray)
                     .cornerRadius(12)
                     .shadow(radius: 10)
                 }
-                .transition(.opacity) // Smooth transition
+                .transition(.opacity)
             }
 
             // Pollinator Popup Overlay
             if isPollinatorPopupVisible {
                 ZStack {
-                    Color.black.opacity(0.5) // Dim background
+                    Color.black.opacity(0.5)
                         .ignoresSafeArea()
 
                     VStack(spacing: 20) {
@@ -165,7 +166,7 @@ struct GardenView: View {
 
                         HStack {
                             Button(action: {
-                                isPollinatorPopupVisible = false // Dismiss popup
+                                isPollinatorPopupVisible = false
                             }) {
                                 Text("Cancel")
                                     .padding()
@@ -175,29 +176,70 @@ struct GardenView: View {
                                     .cornerRadius(8)
                             }
                             Button(action: {
-                                print("Attracting a pollinator for plant in Row \(selectedPot.row + 1), Column \(selectedPot.column + 1)")
+                                // Generate a random pollinator and show the pollinator image popup
+                                pollinatorForPot = pollinators.randomElement()
                                 isPollinatorPopupVisible = false
+                                isPollinatorImagePopupVisible = true
                             }) {
                                 Text("Yes")
                                     .padding()
                                     .frame(maxWidth: .infinity)
-                                    .background(Color.white)
-                                    .foregroundColor(.black)
+                                    .background(Color.green)
+                                    .foregroundColor(.white)
                                     .cornerRadius(8)
                             }
                         }
                     }
                     .padding()
-                    .frame(width: 300) // Control the width of the popup
-                    .background(Color.green)
+                    .frame(width: 300)
+                    .background(Color.gray)
                     .cornerRadius(12)
                     .shadow(radius: 10)
                 }
-                .transition(.opacity) // Smooth transition
+                .transition(.opacity)
+            }
+
+            // Pollinator Image Popup Overlay
+            if isPollinatorImagePopupVisible {
+                ZStack {
+                    Color.black.opacity(0.5)
+                        .ignoresSafeArea()
+
+                    VStack(spacing: 20) {
+                        Text("Pollinator Attracted!")
+                            .font(.headline)
+                            .foregroundColor(.white)
+
+                        if let pollinator = pollinatorForPot {
+                            Image(pollinator)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 100, height: 100)
+                        }
+
+                        Button(action: {
+                            isPollinatorImagePopupVisible = false
+                        }) {
+                            Text("Close")
+                                .padding()
+                                .frame(maxWidth: .infinity)
+                                .background(Color.white)
+                                .foregroundColor(.black)
+                                .cornerRadius(8)
+                        }
+                    }
+                    .padding()
+                    .frame(width: 300)
+                    .background(Color.gray)
+                    .cornerRadius(12)
+                    .shadow(radius: 10)
+                }
+                .transition(.opacity)
             }
         }
         .animation(.easeInOut, value: isPopupVisible)
         .animation(.easeInOut, value: isPollinatorPopupVisible)
+        .animation(.easeInOut, value: isPollinatorImagePopupVisible)
     }
 }
 
