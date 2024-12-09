@@ -7,7 +7,6 @@
 import SwiftUI
 
 struct GardenView: View {
-    
     @State private var isPopupVisible = false
     @State private var isPollinatorPopupVisible = false // State for pollinator popup
     @State private var isPollinatorImagePopupVisible = false // State for pollinator image popup
@@ -17,7 +16,7 @@ struct GardenView: View {
     
     // List of asset names
     let assets = ["Rose", "Lily", "Orchid", "Sunflower", "Tulip"]
-    let pollinators = ["Bee", "Butterfly", "Bat", "Beetle", "Slug"]
+    let names = ["Bee", "Butterfly", "Bat", "Beetle", "Slug"]
     
     // State to track the planted plants in each pot
     @State private var plantedPlants = Array(repeating: Array(repeating: nil as String?, count: 2), count: 3) // 3x2 grid
@@ -65,7 +64,7 @@ struct GardenView: View {
                                             .frame(width: width * 0.375, height: height * 0.15)
                                             .overlay(
                                                 Circle()
-                                                    .stroke(Color.red, lineWidth: 2) // Debugging border, remove for final version
+                                                    .stroke(Color.clear, lineWidth: 2) // Debugging border, remove for final version
                                             )
                                     }
                                 }
@@ -85,7 +84,7 @@ struct GardenView: View {
 
                     VStack(spacing: 20) {
                         Text("Select a Plant for the Pot")
-                            .font(.headline)
+                            .font(.custom("ChalkboardSE-Bold", size: 20))
                             .foregroundColor(.white)
 
                         ScrollView(.horizontal, showsIndicators: false) {
@@ -101,7 +100,7 @@ struct GardenView: View {
                                             .padding()
                                             .background(
                                                 RoundedRectangle(cornerRadius: 8)
-                                                    .stroke(selectedAsset == asset ? Color.blue : Color.clear, lineWidth: 2)
+                                                    .stroke(selectedAsset == asset ? Color.white : Color.clear, lineWidth: 2)
                                             )
                                     }
                                 }
@@ -110,7 +109,7 @@ struct GardenView: View {
                         }
                         .frame(height: 80)
 
-                        Text(selectedAsset != nil ? "Selected: \(selectedAsset!)" : "No Asset Selected")
+                        Text(selectedAsset != nil ? "Selected: \(selectedAsset!)" : "No Flower Selected")
                             .foregroundColor(.white)
                             .font(.subheadline)
 
@@ -161,7 +160,7 @@ struct GardenView: View {
 
                     VStack(spacing: 20) {
                         Text("Attract a Pollinator?")
-                            .font(.headline)
+                            .font(.custom("ChalkboardSE-Bold", size: 24))
                             .foregroundColor(.white)
 
                         HStack {
@@ -177,7 +176,7 @@ struct GardenView: View {
                             }
                             Button(action: {
                                 // Generate a random pollinator and show the pollinator image popup
-                                pollinatorForPot = pollinators.randomElement()
+                                pollinatorForPot = names.randomElement()
                                 isPollinatorPopupVisible = false
                                 isPollinatorImagePopupVisible = true
                             }) {
@@ -207,7 +206,7 @@ struct GardenView: View {
 
                     VStack(spacing: 20) {
                         Text("Pollinator Attracted!")
-                            .font(.headline)
+                            .font(.custom("ChalkboardSE-Bold", size: 26))
                             .foregroundColor(.white)
 
                         if let pollinator = pollinatorForPot {
@@ -215,6 +214,20 @@ struct GardenView: View {
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: 100, height: 100)
+                            
+                            if let pollinatorData = pollinators[pollinator] {
+                                Text(pollinatorData.description)
+                                    .font(.body)
+                                    .foregroundColor(.white)
+                                    .multilineTextAlignment(.center)
+                                    .padding()
+
+                                Text("Ecosystem Role: \(pollinatorData.role)")
+                                    .font(.subheadline)
+                                    .foregroundColor(.white)
+                                    .multilineTextAlignment(.center)
+                                    .padding(.horizontal)
+                            }
                         }
 
                         Button(action: {

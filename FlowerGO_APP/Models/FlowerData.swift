@@ -16,13 +16,6 @@ struct Flower: Identifiable, Codable, Hashable {
     let pollinators: [String] // New field
 }
 
-struct Pollinator: Identifiable {
-    let id: UUID
-    let name: String
-    let imageName: String
-    var position: CGPoint
-}
-
 let flowerDictionary: [String: Flower] = [
     "Rose": Flower(
         id: UUID(),
@@ -63,5 +56,52 @@ let flowerDictionary: [String: Flower] = [
         description: "Lilies have six petal-like segments that can form a variety of shapes, including trumpet, funnel, cup, bell, bowl, or flat. They can be many colors and often have markings or spots.",
         ecosystemRole: "Contributes to biodiversity by providing nectar and pollen for insects, and seeds for birds.",
         pollinators: ["Bees", "Butterflies", "Moths"]
+    )
+]
+
+struct Pollinator: Identifiable, Codable, Hashable {
+    let id: UUID
+    let name: String
+    let imageName: String
+    let description: String
+    let role: String // Ecosystem role
+}
+
+// Instances of Pollinator
+let pollinators: [String: Pollinator] = [
+    "Bee": Pollinator(
+        id: UUID(),
+        name: "Bee",
+        imageName: "bee",
+        description: "Bees are essential pollinators with hairy bodies that collect pollen while moving between flowers. They are attracted to bright, fragrant flowers.",
+        role: "Bees play a vital role in pollination, supporting biodiversity and agricultural production."
+    ),
+    "Butterfly": Pollinator(
+        id: UUID(),
+        name: "Butterfly",
+        imageName: "butterfly",
+        description: "Butterflies are colorful and graceful pollinators that prefer nectar-rich flowers with flat landing platforms.",
+        role: "Butterflies help pollinate wildflowers and ornamental plants, contributing to ecosystem health."
+    ),
+    "Bat": Pollinator(
+        id: UUID(),
+        name: "Bat",
+        imageName: "bat",
+        description: "Bats are nocturnal pollinators that are attracted to pale or white flowers with strong, fruity scents.",
+        role: "Bats are critical pollinators for night-blooming plants and contribute to tropical and desert ecosystems."
+    ),
+    "Beetle": Pollinator(
+        id: UUID(),
+        name: "Beetle",
+        imageName: "beetle",
+        description: "Beetles are among the oldest pollinators and are attracted to flowers with strong odors and open structures.",
+        role: "Beetles aid in pollination by feeding on nectar and pollen, supporting plant reproduction."
+    ),
+    "Slug": Pollinator(
+        id: UUID(),
+        name: "Slug",
+        imageName: "slug",
+        description: "Slugs are less common pollinators that are drawn to low-lying flowers, often feeding on nectar at night.",
+        role: "Slugs contribute to pollination in damp environments, helping support certain plant species."
     )
 ]
