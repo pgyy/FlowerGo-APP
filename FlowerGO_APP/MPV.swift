@@ -91,7 +91,8 @@ struct MPV: View {
                                     getDirection()
                                 }) {
                                     Text("GO!")
-                                        .font(.headline)
+                                        .font(.custom("ChalkboardSE-Bold", size: 20))
+//                                        .foregroundColor(Color(hex: 0x2E8B57))
                                         .padding()
                                         .background(Color.blue)
                                         .foregroundColor(.white)
@@ -102,7 +103,8 @@ struct MPV: View {
                                     navigateToCamView = true
                                 }) {
                                     Text("I see a flower!")
-                                        .font(.headline)
+                                        .font(.custom("ChalkboardSE-Bold", size: 20))
+//                                        .foregroundColor(Color(hex: 0x2E8B57))
                                         .padding()
                                         .background(Color.green)
                                         .foregroundColor(.white)
@@ -120,6 +122,7 @@ struct MPV: View {
                                 toggleAnnotations()
                             }) {
                                 Label(showAnnotations ? "Hide Nearby Flowers" : "Show Nearby Flowers", systemImage: "mappin.and.ellipse")
+                                    .font(.custom("ChalkboardSE-Bold", size: 20))
                             }
                             .buttonStyle(.borderedProminent)
                             Spacer()
@@ -138,7 +141,8 @@ struct MPV: View {
                         .edgesIgnoringSafeArea(.all)
                     VStack {
                         Text("Welcome to Tufts!")
-                            .font(.title)
+                            .font(.custom("ChalkboardSE-Bold", size: 30))
+                            .foregroundColor(Color(hex: 0x2E8B57))
                             .padding()
                         Text("You will see the campus of Tufts University. There are lots of flowers nearby. Walk around to find them! If you need some help, click the 'Show Nearby Flowers' button on the bottom of the screen to see some flowers we have found at those locations. Zoom in and out on the map to find them!")
                             .padding()
@@ -146,13 +150,16 @@ struct MPV: View {
                             showAlert = false
                         }) {
                             Text("Let's Go!")
-                                .font(.headline)
+                                .font(.custom("ChalkboardSE-Bold", size: 30))
                                 .padding()
-                                .background(Color.blue)
+                                .frame(width: 200)
+                                .background(LinearGradient(gradient: Gradient(colors: [Color(hex: 0x34C759), Color(hex: 0x32ADE6)]), startPoint: .topLeading, endPoint: .bottomTrailing))
                                 .foregroundColor(.white)
-                                .cornerRadius(10)
+                                .cornerRadius(16)
+                                .shadow(radius: 5)
+                                .scaleEffect(1.1)
                         }
-                        .buttonStyle(.borderedProminent)
+//                        .buttonStyle(.borderedProminent)
                         Spacer()
                     }
                     .frame(width: 300, height: 422)
@@ -174,6 +181,18 @@ struct MPV: View {
                         .background(Color(UIColor.systemBackground).opacity(0.9))
                         .cornerRadius(20)
                         .padding()
+                        
+                        Button(action: {}) {
+                            NavigationLink(destination: CamView()) {
+                                Image(systemName: "camera")
+                                    .font(.title)
+                                    .foregroundColor(.green)
+                                    .padding()
+                            }
+                            .background(Color(UIColor.systemBackground).opacity(0.9))
+                            .cornerRadius(20)
+                            .padding()
+                        }
                     }
                     Spacer()
                 }

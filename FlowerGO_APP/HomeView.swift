@@ -56,7 +56,7 @@ struct ContentView: View {
                             navigateToMPV = true
                         }) {
                             Text("Ready!")
-                                .font(.headline)
+                                .font(.custom("ChalkboardSE-Bold", size: 30))
                                 .padding()
                                 .frame(width: 200)
                                 .background(LinearGradient(gradient: Gradient(colors: [Color(hex: 0x34C759), Color(hex: 0x32ADE6)]), startPoint: .topLeading, endPoint: .bottomTrailing))
